@@ -13,7 +13,8 @@ Picture-This is a photo editing app that allows users to login using [Facebook](
 This app runs on:
  - [Django](http://)
  - [Facebook SDK](http://)
- - [Angularjs](http://)
+ - [React](http://)
+ - [Material Design for Bootstrap] (http://)
 
 ### Tasks and Deliverables
 | Task   | Points awarded |
