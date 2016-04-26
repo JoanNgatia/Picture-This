@@ -57,7 +57,7 @@ ROOT_URLCONF = 'picturethis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['imageeditor/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

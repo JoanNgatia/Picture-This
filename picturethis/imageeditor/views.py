@@ -12,3 +12,4 @@ class DashboardView(TemplateView):
         context = super(DashboardView, self).get_context_data(**kwargs)
         context['photos'] = Photo.objects.all()
         context['edited_photos'] = EditedPhoto.objects.all()
+        return context

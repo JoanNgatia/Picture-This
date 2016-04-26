@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Picture this</title>
+</head>
+<body>
+    {% for photo in photos %}
+    <div>
+        <img src="{{ photo.image }}">
+    </div>
+    {% endfor %}
+</body>
+</html>
