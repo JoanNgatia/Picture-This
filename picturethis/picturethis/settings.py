@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # rest framework
     'rest_framework',
+    # api documentation
+    'rest_framework_docs',
     # internal apps
     'imageeditor',
 ]
