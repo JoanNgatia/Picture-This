@@ -20,7 +20,7 @@ class Photo(models.Model):
 
 
 class EditedPhoto(models.Model):
-    """Base model for photos that have been edited/filtered through."""
+    """Base model for photos that have been edited and the preview."""
 
     image = models.ImageField(upload_to='editedphotos/')
     parent_image = models.ForeignKey(Photo)
