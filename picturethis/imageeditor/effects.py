@@ -2,7 +2,7 @@ from PIL import Image, ImageFilter, ImageOps, ImageEnhance
 from models import EditedPhoto
 
 
-class ImageEffects(object):
+class ImageEffects:
     """Handle image effects and filters."""
 
     def __init__(self, image, effect):
