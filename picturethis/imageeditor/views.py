@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from models import Photo
-from serializers import PhotoSerializer
+from models import Photo, EditedPhoto
+from serializers import PhotoSerializer, EditedPhotoSerializer
 
 
 class PhotoListView(generics.ListCreateAPIView):
@@ -16,3 +16,10 @@ class PhotoListView(generics.ListCreateAPIView):
 
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
+
+
+class EditedPhotoListView(generics.ListAPIView):
+    """Handle URL to list and create the preview images."""
+
+    queryset = EditedPhoto.objects.all()
+    serializer_class = EditedPhotoSerializer

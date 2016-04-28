@@ -18,4 +18,5 @@ class EditedPhotoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EditedPhoto
-        fields = ('id', 'image', 'parent-photo' 'created_at', 'updated_at')
+        fields = ('id', 'image', 'parent_image', 'effect',
+                  'created_at', 'updated_at')
