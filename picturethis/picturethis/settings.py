@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # rest framework
+    'rest_framework',
+    # api documentation
+    'rest_framework_docs',
     # internal apps
     'imageeditor',
 ]

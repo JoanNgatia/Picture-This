@@ -2,6 +2,8 @@ appnope==0.1.0
 backports.shutil-get-terminal-size==1.0.0
 decorator==4.0.9
 Django==1.9.5
+djangorestframework==3.3.3
+drfdocs==0.0.9
 gnureadline==6.3.3
 ipdb==0.9.3
 ipython==4.2.0
