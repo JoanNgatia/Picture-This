@@ -5,3 +5,11 @@ __pycache__/
 # App generated files
 myphotos/
 editedphotos/
+
+# frontend dev related files
+/node_modules
+
+webpack-stats.json
+
+picturethis/static/js/build/bundle.js
+picturethis/staticfiles
