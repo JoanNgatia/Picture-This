@@ -1,0 +1,43 @@
+{
+  "name": "picture-this",
+  "version": "1.0.0",
+  "description": "Image editing application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-jngatia/Picture-This.git"
+  },
+  "author": "Joan Ngatia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-jngatia/Picture-This/issues"
+  },
+  "homepage": "https://github.com/andela-jngatia/Picture-This#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^2.9.0",
+    "eslint-loader": "^1.3.0",
+    "react": "^15.0.2",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.13.0",
+    "webpack-bundle-tracker": "0.0.93",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "es6-promise": "^3.1.2",
+    "isomorphic-fetch": "^2.2.1",
+    "react-dom": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.0.1"
+  }
+}
