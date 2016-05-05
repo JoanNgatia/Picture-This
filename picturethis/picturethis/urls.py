@@ -15,12 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import TemplateView
+
+# from imageeditor.views import index
 
 urlpatterns = [
     # django admin interface
     url(r'^admin/', admin.site.urls),
+    # React frontend
+    # url(r'^$', index, name='index')
+    url(r'^$', TemplateView.as_view(template_name='base.html')),
     # api endpoints
-    url(r'^', include('imageeditor.urls')),
+    url(r'^api/', include('imageeditor.urls')),
     # api documentation
     url(r'^docs/', include('rest_framework_docs.urls')),
 ]
