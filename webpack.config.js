@@ -6,13 +6,18 @@ module.exports = {
     entry: [
       "./picturethis/static/js/app.jsx"
     ],
+    devtool: 'eval',
     output: {
       path: __dirname + '/picturethis/static/js/build',
       filename: "bundle.js"
     },
     module: {
         loaders: [
-            { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader', 'eslint-loader'], exclude: /node_modules/ }, // to transform JSX into JS
+            {
+            test: /\.jsx?$/,
+            loaders: ['react-hot', 'babel-loader', 'eslint-loader'],
+            exclude: /node_modules/
+            }, // to transform JSX into JS
         ]
     },
     plugins: [
