@@ -15,7 +15,6 @@ class PhotoList extends React.Component {
     render(){
         return(
             <div className="photos-list">
-                {originalphotos}
             </div>
         );
     }
@@ -24,10 +23,10 @@ class PhotoList extends React.Component {
         $.ajax({
             type: 'GET',
             url: '/api/photos/',
-            success: function(originalphotos){
-                this.setState({originalphotos});
-                console.log(`response code is ${result.status}`);
+            success: (originalphotos) => {
+                // this.setState({originalphotos});
                 console.log(this.state);
+                this.setState({ originalphotos });
             }
         });
     }
