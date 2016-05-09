@@ -1,7 +1,7 @@
 import { render } from 'react-dom'
 import React, {Component} from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
+import PhotoList from './photos.jsx';
 injectTapEventPlugin();
 
 class Home extends Component {
@@ -27,6 +27,7 @@ class Home extends Component {
                       <div id="originalphotos">
                         <h1>Hello there!!!</h1>
                         <h4>That's all there is for now</h4>
+                        <PhotoList />
                       </div>
                   </div>
               </div>
