@@ -17,6 +17,7 @@
     "url": "https://github.com/andela-jngatia/Picture-This/issues"
   },
   "homepage": "https://github.com/andela-jngatia/Picture-This#readme",
+  "dev": "eval",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.8.0",
