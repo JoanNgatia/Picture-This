@@ -23,3 +23,20 @@ class EditedPhotoListView(generics.ListAPIView):
 
     queryset = EditedPhoto.objects.all()
     serializer_class = EditedPhotoSerializer
+
+
+class PhotoDetailView(generics.ListAPIView):
+    """Handle GET to /api/v1/photos/<pk>.
+
+    GET:
+        Show details of a particular picture
+    """
+
+    serializer_class = PhotoSerializer
+
+    def get_queryset(self):
+        """GET /api/images/detail/<pk>."""
+        logged_in_user = self.request.user
+        pk = self.kwargs.get('pk')
+
+        return Photo.objects.filter(owner=logged_in_user, pk=pk)
