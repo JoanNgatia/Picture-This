@@ -15,7 +15,7 @@ class EditedPhotoList extends React.Component {
     render(){
         const editedphotos = this._geteditedPhotos();
         return(
-            <div className="photos-list">
+            <div className="filteredphotos">
                 {editedphotos}
             </div>
         );
@@ -29,7 +29,7 @@ class EditedPhotoList extends React.Component {
                 // this.setState({originalphotos});
                 console.log(this.state);
                 this.setState({editedphotos: editedphotos });
-                console.log(this.state.editedphotos);
+                console.log(editedphotos);
             }
         });
     }
@@ -37,19 +37,24 @@ class EditedPhotoList extends React.Component {
     _geteditedPhotos(){
         return this.state.editedphotos.map((editedphoto) => {
             return (<EditedPhoto
-                key={editedphoto.id}
-                body={editedphoto.image}/>);
+                key={editedphoto.id}/>);
         });
     }
 }
 
-const EditedPhoto = (props) => {
-    return(
-        <div className="original-photos">
-            <h5>Filtered Image names</h5>
-            <img src={this.props.body}/>
-        </div>
-    );
+class EditedPhoto extends React.Component {
+    constructor() {
+        super();
+    }
+
+    render(){
+        return(
+            <div className="filteredphotos">
+                <h5>Filtered Image names</h5>
+                <img src={this.props.body}/>
+            </div>
+        );
+    }
 }
 
 export default EditedPhotoList
