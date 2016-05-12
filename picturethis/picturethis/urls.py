@@ -16,17 +16,19 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-
-# from imageeditor.views import index
+import settings
 
 urlpatterns = [
     # django admin interface
     url(r'^admin/', admin.site.urls),
     # React frontend
-    # url(r'^$', index, name='index')
     url(r'^$', TemplateView.as_view(template_name='base.html')),
     # api endpoints
     url(r'^api/', include('imageeditor.urls')),
     # api documentation
     url(r'^docs/', include('rest_framework_docs.urls')),
+    # media route
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT,
+    })
 ]
