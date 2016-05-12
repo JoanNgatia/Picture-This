@@ -1,0 +1,20 @@
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+#editedphotos {
+    height: 40px;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+#uploadedpics {
+    height: 24em;
+}
+
+#effectthumbnails {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: 11em;
+    background-color: #fafafa;
+}

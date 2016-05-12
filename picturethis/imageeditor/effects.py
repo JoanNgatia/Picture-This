@@ -12,7 +12,7 @@ class ImageEffects(object):
         self.image = Image.open(image)
         self.effect = effect
         self.image_name = image.name
-        self.file_path = settings.BASE_DIR + '/editedphotos/' + \
+        self.file_path = settings.MEDIA_ROOT + '/editedphotos/' + \
             effect + os.path.basename(self.image_name)
 
     def enhancements(self, enhancement_type):
