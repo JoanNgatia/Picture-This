@@ -11,7 +11,7 @@ const Home = () => {
           <div>
                 <nav>
                   <div className="nav-wrapper">
-                    <a href="#" className="brand-logo">Picture-This</a>
+                    <h1><a href="#" className="brand-logo">Picture-This</a></h1>
                     <ul className="right hide-on-med-and-down">
                       <li><a href="#"><i className="material-icons">search</i></a></li>
                       <li><a href="#"><i className="material-icons">refresh</i></a></li>
