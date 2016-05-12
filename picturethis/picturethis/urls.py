@@ -30,5 +30,7 @@ urlpatterns = [
     # media route
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT,
-    })
+    }),
+    # social authentication
+    url('', include('social.apps.django_app.urls', namespace='social')),
 ]
