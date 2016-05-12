@@ -34,10 +34,13 @@ const Home = () => {
                       <div id="originalphotos">
                         <h1>Hello there!!!</h1>
                         <h4>That's all there is for now</h4>
-                        <div className="col s12" id="uploadedpics">
+                        <div className="col s5" id="uploadedpics">
                           <OriginalPhotoList />
                         </div>
-                        <div className="col s12" id="effectthumbnails">
+                        <div className="col s7" id="effectthumbnails">
+                          <div className=""></div>
+                          <div className=""></div>
+                          <IndividualPhoto />
                           <EditedPhotoList />
                         </div>
                       </div>
