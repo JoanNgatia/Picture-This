@@ -13,3 +13,7 @@ webpack-stats.json
 
 picturethis/static/js/build/bundle.js
 picturethis/staticfiles
+
+npm-debug.log
+
+picturethis/picturethis/config.py

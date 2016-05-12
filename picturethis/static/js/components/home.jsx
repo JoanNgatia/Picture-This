@@ -11,7 +11,7 @@ const Home = () => {
           <div>
                 <nav>
                   <div className="nav-wrapper">
-                    <a href="#" className="brand-logo">Picture-This</a>
+                    <h1><a href="#" className="brand-logo">Picture-This</a></h1>
                     <ul className="right hide-on-med-and-down">
                       <li><a href="#"><i className="material-icons">search</i></a></li>
                       <li><a href="#"><i className="material-icons">refresh</i></a></li>
@@ -24,8 +24,8 @@ const Home = () => {
                       <div className="row">
                         <div className="col s12">
                           <ul className="tabs">
-                            <li className="tab col s6"><a href="#originalphotos">Your Photos</a></li>
-                            <li className="tab col s6"><a className="active" href="#test2">Edits</a></li>
+                            <li className="tab col s6"><a href="#uploadedpics">Your Photos</a></li>
+                            <li className="tab col s6"><a className="active" href="#effectthumbnails">Edits</a></li>
                           </ul>
                         </div>
                       </div>
@@ -34,10 +34,13 @@ const Home = () => {
                       <div id="originalphotos">
                         <h1>Hello there!!!</h1>
                         <h4>That's all there is for now</h4>
-                        <div className="col s12" id="uploadedpics">
+                        <div className="col s5" id="uploadedpics">
                           <OriginalPhotoList />
                         </div>
-                        <div className="col s12" id="effectthumbnails">
+                        <div className="col s7" id="effectthumbnails">
+                          <div className=""></div>
+                          <div className=""></div>
+                          <IndividualPhoto />
                           <EditedPhotoList />
                         </div>
                       </div>

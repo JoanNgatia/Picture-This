@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="row" id="social_login_div">
+    <h1>Picture-This</h1>
+    <h3>Make your memories magical</h3>
+    <div class="col" id="facebook_login">
+        <!--a class="waves-effect waves-light btn" id="facebook_login_button" href="/"><i class="fa fa-facebook-official"></i> Login With Facebook</a-->
+        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="waves-effect waves-light btn" id="facebook_login_button"><i class="fa fa-facebook-official"></i>Login with Facebook</a>
+    </div>
+    <div class="col" id="twitter_login">
+        <!--a class="waves-effect waves-light btn" id="twitter_login_button" href="/"><i class="fa fa-twitter"></i> Login With Twitter</a-->
+        <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="waves-effect waves-light btn"><i class="fa fa-twitter"></i>Login with Twitter</a>
+    </div>
+</div>
+
+{% endblock %}

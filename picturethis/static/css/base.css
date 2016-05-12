@@ -1,5 +1,21 @@
 h1 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Stalemate', cursive;
+    font-weight: bold;
+    margin-top: auto;
+}
+
+h3 {
+    font-size: 25px;
+    font-family: cursive;
+    margin-top: 0px;
+}
+
+#facebook_login {
+    padding-left: 0px;
+}
+
+#facebook_login_button {
+    background-color: #3b5998
 }
 
 #editedphotos {
@@ -17,4 +33,21 @@ h1 {
     overflow-x: scroll;
     height: 11em;
     background-color: #fafafa;
+}
+
+#social_login_div {
+    margin-top: 150px;
+    margin-bottom: 0px;
+    margin-left: 300px;
+    margin-right: auto;
+    top: 244px;
+    min-width: 750px;
+}
+
+body {
+    /*background: url('../img/artpaint.jpeg') no-repeat center center fixed;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
