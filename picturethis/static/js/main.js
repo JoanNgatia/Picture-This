@@ -126,6 +126,9 @@ var facebookLogin = {
         version: 'v2.5'
       });
       $(facebookLogin.config.login).attr('disabled', false);
+      FB.Event.subscribe('auth.login', function () {
+          window.location = "http://localhost:8000/#/home";
+      });
     });
     $(facebookLogin.config.login).click(function(e) {
       e.preventDefault();
@@ -137,11 +140,11 @@ var facebookLogin = {
     FB.login(function(response) {
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me?fields=email,first_name,last_name,picture',
-            socialLogin);
+        FB.api('/me?fields=email,first_name,last_name,picture');
       } else {
         $('#status-msg').text('an error occured');
       }
+      console.log('Welcome!  Fetching your information. you there ');
     }, {
       scope: 'email,user_likes'
     });

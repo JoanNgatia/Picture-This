@@ -24,8 +24,8 @@ const Home = () => {
                       <div className="row">
                         <div className="col s12">
                           <ul className="tabs">
-                            <li className="tab col s6"><a href="#originalphotos">Your Photos</a></li>
-                            <li className="tab col s6"><a className="active" href="#test2">Edits</a></li>
+                            <li className="tab col s6"><a href="#uploadedpics">Your Photos</a></li>
+                            <li className="tab col s6"><a className="active" href="#effectthumbnails">Edits</a></li>
                           </ul>
                         </div>
                       </div>
