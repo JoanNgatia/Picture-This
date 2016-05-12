@@ -1,11 +1,12 @@
 import { render } from 'react-dom'
 import React, {Component} from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import PhotoList from './photos.jsx';
+import OriginalPhotoList from './originalphotos.jsx';
+import EditedPhotoList from './editedphotos.jsx';
 injectTapEventPlugin();
 
-class Home extends Component {
-  render () {
+const Home = () => {
+
       return (
           <div>
                 <nav>
@@ -20,20 +21,25 @@ class Home extends Component {
                 </nav>
               <div className="row">
                   <div className="col s12 m4 l3">
-                      <div id="editedphotos">
+                      <div className="row">
+                        <div className="col s12">
+                          <ul className="tabs">
+                            <li className="tab col s6"><a href="#originalphotos">Your Photos</a></li>
+                            <li className="tab col s6"><a className="active" href="#test2">Edits</a></li>
+                          </ul>
+                        </div>
                       </div>
                   </div>
                   <div className="col s12 m8 l9">
                       <div id="originalphotos">
                         <h1>Hello there!!!</h1>
                         <h4>That's all there is for now</h4>
-                        <PhotoList />
+                        <OriginalPhotoList />
                       </div>
                   </div>
               </div>
           </div>
       );
-  }
 }
 
-module.exports = Home;
+export default Home

@@ -1,5 +1,5 @@
 import React from 'react';
-class PhotoList extends React.Component {
+class OriginalPhotoList extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -8,8 +8,8 @@ class PhotoList extends React.Component {
         this._fetchoriginalPhotos = this._fetchoriginalPhotos.bind(this);
     }
 
-    componentWillMount(){
-        this._fetchoriginalPhotos();
+    componentDidMount(){
+         this._fetchoriginalPhotos();
     }
 
     render(){
@@ -27,10 +27,9 @@ class PhotoList extends React.Component {
             type: 'GET',
             url: '/api/photos/',
             success: (originalphotos) => {
-                // this.setState({originalphotos});
                 console.log(this.state);
-                this.setState({ originalphotos });
-                console.log(originalphotos);
+                this.setState({originalphotos:  originalphotos });
+                console.log(this.state.originalphotos, 'states');
             }
         });
     }
@@ -40,27 +39,19 @@ class PhotoList extends React.Component {
             return (<OriginalPhoto
                 key={originalphoto.id}
                 body={originalphoto.image}/>);
-                // image_path={originalphoto.image}
-                // key={originalphoto.id}/>);
-            // <img src={originalphoto.image}/>
-            // <div>{originalphoto}</div>
         });
     }
 }
 
-class OriginalPhoto extends React.Component {
-    constructor() {
-        super();
-    }
+const OriginalPhoto  = (props) => {
 
-    render(){
         return(
             <div className="original-photos">
                 <h5>Image names</h5>
-                <img src={this.props.body}/>
+                <img src={props.body}/>
             </div>
         );
-    }
+
 }
 
-export default PhotoList
+export default OriginalPhotoList
