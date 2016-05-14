@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework_docs',
     # social auth
     'social.apps.django_app.default',
+    # image processing
+    'imagekit',
     # internal apps
     'imageeditor',
 ]
