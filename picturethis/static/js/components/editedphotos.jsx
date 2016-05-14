@@ -37,7 +37,8 @@ class EditedPhotoList extends React.Component {
     _geteditedPhotos(){
         return this.state.editedphotos.map((editedphoto) => {
             return (<EditedPhoto
-                key={editedphoto.id}/>);
+                key={editedphoto.id}
+                body={editedphoto.file_path}/>);
         });
     }
 }

@@ -13,8 +13,6 @@ const Home = () => {
                   <div className="nav-wrapper">
                     <h1><a href="#" className="brand-logo">Picture-This</a></h1>
                     <ul className="right hide-on-med-and-down">
-                      <li><a href="#"><i className="material-icons">search</i></a></li>
-                      <li><a href="#"><i className="material-icons">refresh</i></a></li>
                       <li><a href="#"><i className="material-icons">more_vert</i></a></li>
                     </ul>
                   </div>
@@ -32,16 +30,18 @@ const Home = () => {
                   </div>
                   <div className="col s12 m8 l9">
                       <div id="originalphotos">
-                        <h1>Hello there!!!</h1>
-                        <h4>That's all there is for now</h4>
                         <div className="col s5" id="uploadedpics">
+                          <h1>Hello there!!!</h1>
                           <OriginalPhotoList />
                         </div>
-                        <div className="col s7" id="effectthumbnails">
-                          <div className=""></div>
-                          <div className=""></div>
-                          <IndividualPhoto />
-                          <EditedPhotoList />
+                        <div className="col s7">
+                          <h4>That's all there is for now</h4>
+                          <div className="individualphoto">
+                            <EditedPhotoList />
+                          </div>
+                          <div className="editedphotothumbnails">
+                            <EditedPhotoList />
+                          </div>
                         </div>
                       </div>
                   </div>
