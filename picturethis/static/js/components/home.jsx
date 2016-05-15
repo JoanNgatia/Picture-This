@@ -23,6 +23,17 @@ const Home = () => {
                 <li className="tab col s6 active "><a href="#">Home</a></li>
                 <li className="tab col s6"><a href="#">Profile</a></li>
               </ul>
+              <form action="/api/photos/" method="post">
+                <div className="file-field input-field">
+                  <div className="btn">
+                    <span>Add new Photo</span>
+                    <input type="file" />
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" />
+                  </div>
+                </div>
+              </form>
               <OriginalPhotoList />
             </div>
             <div className="col s12 m8 l9">
