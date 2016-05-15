@@ -18,7 +18,7 @@ const Home = () => {
             </div>
           </nav>
           <div className="row">
-            <div className="col s12 m4 l3">
+            <div className="col s12 m4 l4">
               <ul className="tabs">
                 <li className="tab col s6 active "><a href="#">Home</a></li>
                 <li className="tab col s6"><a href="#">Profile</a></li>
@@ -36,7 +36,7 @@ const Home = () => {
               </form>
               <OriginalPhotoList />
             </div>
-            <div className="col s12 m8 l9">
+            <div className="col s12 m8 l8">
             </div>
           </div>
         </div>
