@@ -1,12 +1,15 @@
 import React from 'react';
+import PhotoForm from'./photoform.jsx';
 class OriginalPhotoList extends React.Component {
     // set original component state
     constructor() {
         super();
         this.state = {
-            originalphotos: []
+            originalphotos: [],
+            newphoto: ""
         };
         this._fetchoriginalPhotos = this._fetchoriginalPhotos.bind(this);
+        this._addphoto = this._addphoto.bind(this);
     }
 
     // set image render on component load on page
@@ -27,6 +30,24 @@ class OriginalPhotoList extends React.Component {
         });
     }
 
+    _addphoto(event) {
+        this.setState({newphoto: event.target.value})
+    }
+
+    _handlePhotoSubmit(photo){
+        $.ajax({
+          url: '/api/photos/',
+          type: 'POST',
+          data: photo,
+          success: function(data) {
+            this.setState({data: data});
+          }.bind(this),
+          error: function(xhr, status, err) {
+            console.error('/api/photos/', status, err.toString());
+          }.bind(this)
+        });
+    }
+
     // map out all photos returned from server to the single photo component
     _getoriginalPhotos(){
         return this.state.originalphotos.map((originalphoto) => {
@@ -40,6 +61,7 @@ class OriginalPhotoList extends React.Component {
         const originalphotos = this._getoriginalPhotos();
         return(
             <div className="photos-list">
+                <PhotoForm onFileSubmit={this._handlePhotoSubmit}/>
                 {originalphotos}
             </div>
         );
