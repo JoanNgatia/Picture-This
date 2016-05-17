@@ -21,10 +21,15 @@ class PhotoListView(generics.ListCreateAPIView):
 
 
 class EditedPhotoListView(generics.ListAPIView):
-    """Handle URL to list and create the preview images."""
+    """Handle URL to list the preview images with the prerendered filters."""
 
-    queryset = EditedPhoto.objects.all()
+    # queryset = EditedPhoto.objects.all()
     serializer_class = EditedPhotoSerializer
+    permission_classes = (AllowAny, )
+
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+        return EditedPhoto.objects.filter(parent_image=pk)
 
 
 class PhotoDetailView(generics.ListAPIView):
@@ -35,10 +40,11 @@ class PhotoDetailView(generics.ListAPIView):
     """
 
     serializer_class = PhotoSerializer
+    permission_classes = (AllowAny, )
 
     def get_queryset(self):
         """GET /api/images/detail/<pk>."""
-        logged_in_user = self.request.user
+        # logged_in_user = self.request.user
         pk = self.kwargs.get('pk')
-
-        return Photo.objects.filter(owner=logged_in_user, pk=pk)
+        return Photo.objects.filter(pk=pk)
+        # return Photo.objects.filter(owner=logged_in_user, pk=pk)
