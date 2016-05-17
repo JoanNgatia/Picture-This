@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import OriginalPhotoList from './originalphotos.jsx';
 import EditedPhotoList from './editedphotos.jsx';
+import ImagePanel from './imagepanel.jsx';
 injectTapEventPlugin();
 
 const Home = () => {
@@ -18,18 +19,21 @@ const Home = () => {
             </div>
           </nav>
           <div className="row">
-            <div className="col s12 m4 l4">
+            <div className="col s12 m4 l3">
               <ul className="tabs">
                 <li className="tab col s6 active "><a href="#">Home</a></li>
                 <li className="tab col s6"><a href="#">Profile</a></li>
               </ul>
               <OriginalPhotoList />
             </div>
-            <div className="col s12 m8 l8">
+            <div className="col s12 m8 l9">
+                <div className="col s12 thumbnails">
+                  <ImagePanel />
+                </div>
             </div>
           </div>
         </div>
       );
 }
 
-export default Home
+module.exports = Home
