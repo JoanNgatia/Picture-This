@@ -36,7 +36,10 @@ class OriginalPhotoList extends React.Component {
         return this.state.originalPhotos.map((originalphoto) => {
             return (<OriginalPhoto
                 key={originalphoto.id}
-                body={originalphoto.image}/>);
+                body={originalphoto.image}
+                date_created={originalphoto.created_at}
+                date_updated={originalphoto.updated_at}
+                />);
         });
     }
 
@@ -99,8 +102,13 @@ const OriginalPhoto  = (props) => {
                       <p><a href="#">This is a link</a></p>
                     </div>
                     <div className="card-reveal">
-                      <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-                      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                      <span className="card-title grey-text text-darken-4">Pic Details<i className="material-icons right">close</i></span>
+                      <p>Date Created:
+                        {props.date_created}
+                      </p>
+                      <p>Date Modified:
+                        {props.date_updated}
+                      </p>
                     </div>
                 </div>
             </div>
