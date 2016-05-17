@@ -1,7 +1,6 @@
 import React from 'react';
 import request from 'superagent';
 
-// import PhotoForm from'./photoform.jsx';
 class OriginalPhotoList extends React.Component {
     // set original component state
     constructor() {
@@ -43,6 +42,7 @@ class OriginalPhotoList extends React.Component {
         });
     }
 
+    // send image data to the server
     _addphoto(photo){
         let formData = new FormData();
         let files = document.getElementById('files').files;
@@ -74,6 +74,7 @@ class OriginalPhotoList extends React.Component {
         this.setState({newPhoto: photo})
     }
 
+    // form for image upload
     render(){
         const originalphotos = this._getoriginalPhotos();
         return(
@@ -93,7 +94,7 @@ const OriginalPhoto  = (props) => {
 
         return(
             <div className="original-photos">
-                <div className="card">
+                <div className="card small">
                     <div className="card-image waves-effect waves-block waves-light">
                       <img className="activator" src={props.body} />
                     </div>
@@ -116,4 +117,4 @@ const OriginalPhoto  = (props) => {
 
 }
 
-export default OriginalPhotoList
+module.exports = OriginalPhotoList
