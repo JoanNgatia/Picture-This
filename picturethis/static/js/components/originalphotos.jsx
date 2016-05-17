@@ -77,7 +77,7 @@ class OriginalPhotoList extends React.Component {
             <div className="photos-list">
                 <form enctype="multipart/form-data" onSubmit={this._handleSubmit.bind(this)}>
                     <input type="file" name="image" id="files" onChange={this._handleChange.bind(this)}/>
-                    <button className='add-photo' type="submit">Upload new Photo</button>
+                    <button className='btn btn-primary add-photo' type="submit">Upload new Photo</button>
                 </form>
                 {originalphotos}
             </div>
