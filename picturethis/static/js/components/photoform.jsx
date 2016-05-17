@@ -13,22 +13,28 @@ class PhotoForm extends React.Component{
 
     _handleSubmit(event) {
         event.preventDefault();
-        var file = this.state.file;
+        // var file = this.state.file;
         this.props.onFileSubmit({file: file});
         this.setState({file: ''});
     }
 
     render() {
         return (
-          <form className="photouploadform" onSubmit={this.handleSubmit}>
-            <input
-              type="file"
-              placeholder="Add New Photo"
-              value={this.state.file}
-              onChange={this._handleFileChange}
-            />
-            <input type="submit" value="Post" />
-          </form>
+            <form className="photouploadform" onSubmit={this.handleSubmit}>
+                <div className="file-field input-field">
+                  <div className="btn">
+                    <span>Add new Photo</span>
+                    <input type="file"
+                           placeholder="Add New Photo"
+                           value={this.state.file}
+                           onChange={this._handleFileChange}
+                    />
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" />
+                  </div>
+                </div>
+            </form>
         );
     }
 }
