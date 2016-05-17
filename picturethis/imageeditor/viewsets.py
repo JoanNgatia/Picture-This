@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.permissions import AllowAny
 
 from models import Photo, EditedPhoto
 from serializers import PhotoSerializer, EditedPhotoSerializer
@@ -16,6 +17,7 @@ class PhotoListView(generics.ListCreateAPIView):
 
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
+    permission_classes = (AllowAny, )
 
 
 class EditedPhotoListView(generics.ListAPIView):

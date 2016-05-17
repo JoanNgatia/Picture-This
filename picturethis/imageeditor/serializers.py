@@ -6,6 +6,8 @@ from models import Photo, EditedPhoto
 class PhotoSerializer(serializers.ModelSerializer):
     """Define original photo serializer fields."""
 
+    image = serializers.ImageField(use_url=True)
+
     class Meta:
         model = Photo
         fields = ('id', 'owner', 'image',
