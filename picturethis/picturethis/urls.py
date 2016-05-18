@@ -15,14 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-# from django.views.generic import TemplateView
+from imageeditor.views import LoginView
 import settings
 
 urlpatterns = [
     # django admin interface
     url(r'^admin/', admin.site.urls),
-    # React frontend
-    # url(r'^$', TemplateView.as_view(template_name='base.html')),
     # api endpoints
     url(r'^api/', include('imageeditor.urls')),
     # api documentation
@@ -34,7 +32,7 @@ urlpatterns = [
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
 
     # frontend routes
-    url(r'^$', 'imageeditor.views.login'),
+    url(r'^$', LoginView.as_view(), name="login"),
     url(r'^home/$', 'imageeditor.views.home'),
     url(r'^logout/$', 'imageeditor.views.logout'),
     # social authentication

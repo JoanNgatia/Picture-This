@@ -1,15 +1,20 @@
 """Use django default views to handle login/logout."""
-from django.shortcuts import render_to_response, redirect, render
+from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
-# from django.template.context import RequestContext
+from django.views.generic import TemplateView
 
 
-def login(request):
-    # context = RequestContext(request, {
-    #     'request': request, 'user': request.user})
-    # return render_to_response('login.html', context_instance=context)
-    return render(request, 'login.html')
+class LoginView(TemplateView):
+    """Handle User authentication on the frontend."""
+
+    template_name = 'login.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        """Check that user has successfully been authenticated."""
+        if request.user.is_authenticated():
+            return redirect('/home')
+        return super(LoginView, self).dispatch(request, *args, **kwargs)
 
 
 @login_required(login_url='/')
