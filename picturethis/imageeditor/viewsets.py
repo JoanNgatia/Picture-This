@@ -1,8 +1,11 @@
+"""Defines the api endpoints for image creation, retrieval ,filtering."""
+
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
 from models import Photo, EditedPhoto
-from serializers import PhotoSerializer, EditedPhotoSerializer
+from serializers import PhotoSerializer, EditedPhotoSerializer, \
+    FinalPhotoSerializer
 
 
 class PhotoListView(generics.ListCreateAPIView):
@@ -13,6 +16,24 @@ class PhotoListView(generics.ListCreateAPIView):
         To add an image:
             image - image_upload field.
     Returns:
+        POST/GET -- Dictionary containing original photo details as per
+                    serializer class
+    """
+
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+    permission_classes = (AllowAny, )
+
+
+class PhotoDetailView(generics.RetrieveAPIView):
+    """Handle access to a particular photo.
+
+    URL : /api/v1/photos/<photo_id>
+    Methods: GET
+    Args:
+        pk = original photo id
+    Returns:
+        Single image details per serializer class
     """
 
     queryset = Photo.objects.all()
@@ -21,30 +42,42 @@ class PhotoListView(generics.ListCreateAPIView):
 
 
 class EditedPhotoListView(generics.ListAPIView):
-    """Handle URL to list the preview images with the prerendered filters."""
+    """Handle URL to list all the preview images with the prerendered filters.
+
+    URL : /api/v1/photos/<photo_id>/edits
+    Methods: GET
+    Args:
+        pk = original photo id
+    Returns:
+        List of all preview filter images
+    """
 
     # queryset = EditedPhoto.objects.all()
     serializer_class = EditedPhotoSerializer
     permission_classes = (AllowAny, )
 
     def get_queryset(self):
+        """"Return previews as per original photo id."""
         pk = self.kwargs.get('pk')
         return EditedPhoto.objects.filter(parent_image=pk)
 
 
-class PhotoDetailView(generics.ListAPIView):
-    """Handle GET to /api/v1/photos/<pk>.
+class FinalPhotoView(generics.RetrieveAPIView):
+    """Handle URL to access a single filter image for final saving.
 
-    GET:
-        Show details of a particular picture
+    URL : /api/v1/photos/<photo_id>/edits/<preview_id>
+    Methods: GET
+    Args:
+        photo_id = original photo id
+        pk = preview photo id
+    Returns:
+        Single filtered Image detail
     """
 
-    serializer_class = PhotoSerializer
-    permission_classes = (AllowAny, )
+    serializer_class = FinalPhotoSerializer
 
     def get_queryset(self):
-        """GET /api/images/detail/<pk>."""
-        # logged_in_user = self.request.user
-        pk = self.kwargs.get('pk')
-        return Photo.objects.filter(pk=pk)
-        # return Photo.objects.filter(owner=logged_in_user, pk=pk)
+        """"Return single previews as per original photo id."""
+        preview_id = self.kwargs.get('pk')
+        photo_id = self.kwargs.get('photo_id')
+        return EditedPhoto.objects.filter(id=preview_id, parent_image=photo_id)
