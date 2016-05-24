@@ -1,13 +1,11 @@
 import { render } from 'react-dom'
 import React, {Component} from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import OriginalPhotoList from './originalphotos.jsx';
 import EditedPhotoList from './editedphotos.jsx';
 import ImagePanel from './imagepanel.jsx';
-injectTapEventPlugin();
 
-const Home = () => {
-
+class Home extends React.Component {
+  render(){
       return (
         <div>
           <nav>
@@ -34,6 +32,7 @@ const Home = () => {
           </div>
         </div>
       );
+    }
 }
 
-module.exports = Home
+export default Home
