@@ -4,7 +4,7 @@
 
 ###### Start Date:  18/4/2016
 
-###### End Date:  18/5/2016
+###### End Date:  30/5/2016
 
 ### Application Overview
 Picture-This is a photo editing app that allows users to login using [Facebook](http://facebook.com), upload photos , add awesome effects and filters to them and then share them publicly.
