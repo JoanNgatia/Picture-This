@@ -1,0 +1,40 @@
+[
+    {
+        "fields":{
+                "username": "joan_ngatia",
+                "first_name": "",
+                "last_name": "",
+                "is_active": true,
+                "is_superuser": true,
+                "is_staff": true,
+                "last_login": "2016-04-14 10:32:19.209946+03",
+                "groups": [],
+                "user_permissions": [],
+                "password": "pbkdf2_sha256$24000$OBhEa8SLZy4l$5ioAndYQZ77kV1x2faG1r6WzGbBKOTWYgQdbsDqXZgk=",
+                "email": "joan.ngatia@andela.com",
+                "date_joined": "2016-04-22 10:07:20.153006+03"
+                },
+            "model": "auth.user",
+            "pk": 1
+    },
+    {
+        "fields":{
+                "owner": 1,
+                "image": "myphotos/jump.jpeg",
+                "created_at": "2016-05-10 18:47:59.796096+03",
+                "updated_at": "2016-05-10 22:18:31.753505+03"
+                },
+            "model": "imageeditor.Photo",
+            "pk": 66
+    },
+    {
+        "fields":{
+                "owner": 1,
+                "image": "myphotos/lists.jpeg",
+                "created_at": "2016-05-10 23:17:37.845131+03",
+                "updated_at": "2016-05-10 23:23:26.637743+03"
+                },
+            "model": "imageeditor.Photo",
+            "pk": 72
+    }
+]

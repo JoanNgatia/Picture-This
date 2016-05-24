@@ -1,10 +1,13 @@
 appnope==0.1.0
 backports.shutil-get-terminal-size==1.0.0
+coverage==4.0.3
 decorator==4.0.9
 Django==1.9.5
 django-appconf==1.0.2
 django-braces==1.8.1
+django-coverage==1.2.4
 django-imagekit==3.3
+django-nose==1.4.3
 django-oauth-toolkit==0.10.0
 django-rest-framework-social-oauth2==1.0.4
 djangorestframework==3.3.3
@@ -13,6 +16,7 @@ gnureadline==6.3.3
 ipdb==0.9.3
 ipython==4.2.0
 ipython-genutils==0.1.0
+nose==1.3.7
 oauthlib==1.0.3
 pathlib2==2.1.0
 pexpect==4.0.1
@@ -23,6 +27,7 @@ psycopg2==2.6.1
 ptyprocess==0.5.1
 PyJWT==1.4.0
 python-openid==2.2.5
+python-social-auth==0.2.19
 requests==2.10.0
 requests-oauthlib==0.6.1
 simplegeneric==0.8.1

@@ -19,9 +19,6 @@ class Photo(models.Model):
 
     owner = models.ForeignKey(User, related_name='photos')
     image = models.ImageField(upload_to='myphotos/')
-    # thumbnail = ImageSpecField(source='image',
-    #                            processors=[ResizeToFit(300, 150)],
-    #                            format='JPEG')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -30,10 +27,6 @@ class Photo(models.Model):
         """Extend parent meta class."""
 
         ordering = ['-updated_at']
-
-    # def __unicode__(self):
-    #     text = "thumbnail ID: " + str(self.thumbnail)
-    #     return text
 
 
 class EditedPhoto(models.Model):
