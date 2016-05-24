@@ -66,18 +66,20 @@ class OriginalPhotoList extends React.Component {
             });
     }
 
+    // set selected photo to clicked photo
     updateSelectedImage(sel, event) {
-       // event.preventDefault();
         imageStore.setSelectedPhoto(sel)
         imageActions.getimagefilters(sel.id)
     }
 
+    // handle form submission
     _handleSubmit(event){
         event.preventDefault();
         console.log(this.state.newPhoto);
         this._addphoto(this.state.newPhoto);
     }
 
+    // handle file input on image upload form
     _handleChange(event){
         event.preventDefault();
         let photo =  event.target.value

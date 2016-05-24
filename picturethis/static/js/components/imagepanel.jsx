@@ -23,6 +23,7 @@ class ImagePanel extends React.Component {
       imageStore.addChangeListener(this._fetchPreviewFilters)
   }
 
+  // set selected photo on canvas
   _fetchSelectedPhoto() {
     let photo = imageStore.getSelectedPhoto();
     this.setState({selectedPhoto: photo})
@@ -52,12 +53,14 @@ class ImagePanel extends React.Component {
       });
   }
 
+  // update selected flter preview photo on canvas
   updateSelectedFilter(sel, event) {
         this.setState({selectedPhoto: sel})
   }
-  _onSave () {
-    imageActions.savefinalimage(p, p2, p3);
-  }
+
+  // _onSave () {
+  //   imageActions.savefinalimage(p, p2, p3);
+  // }
 
   render() {
     const previewphotos = this._getpreviewPhotos();
@@ -87,6 +90,7 @@ class ImagePanel extends React.Component {
   }
 }
 
+//  render preview thumbnails
 const PreFilteredPhoto  = (props) => {
       console.log(props)
       return(
@@ -97,6 +101,7 @@ const PreFilteredPhoto  = (props) => {
         );
 }
 
+// render image in focus on canvas
 const Canvas = (props) => {
       return (
         <div className="canvas">
