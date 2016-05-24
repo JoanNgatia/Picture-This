@@ -12,12 +12,21 @@ module.exports = {
       filename: "bundle.js"
     },
     module: {
+        // ensure linting occurs before babel transpilation
+        preLoaders: [
+          {
+            test: /\.jsx$|\.js$/,
+            loader: 'eslint-loader',
+            include: __dirname + '/assets',
+            exclude: /bundle\.js$/
+          }
+        ],
         loaders: [
-            {
-            test: /\.jsx?$/,
-            loaders: ['react-hot', 'babel-loader', 'eslint-loader'],
+          {
+            test: /\.jsx$|\.js$/,
+            loaders: ['babel-loader', 'eslint-loader'],
             exclude: /node_modules/
-            }, // to transform JSX into JS
+          }
         ]
     },
     plugins: [
