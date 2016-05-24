@@ -5,8 +5,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-# from imagekit.models import ImageSpecField
-# from imagekit.processors import ResizeToFit
 
 from effects import ImageEffects
 
@@ -52,6 +50,15 @@ class EditedPhoto(models.Model):
         """Extend parent meta class."""
 
         ordering = ['-updated_at']
+
+
+class FinalPhoto(models.Model):
+    """Base model to hold final edited photo."""
+
+    image = models.ImageField(upload_to='finalphotos/')
+    effect_applied = models.ForeignKey(EditedPhoto)
+
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 @receiver(post_save, sender=Photo)
