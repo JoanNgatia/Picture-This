@@ -92,7 +92,7 @@ class ImagePanel extends React.Component {
 
 //  render preview thumbnails
 const PreFilteredPhoto  = (props) => {
-      console.log(props)
+      // console.log(props)
       return(
         <div className="col s3">
           <img src={props.body} width="150" height="100" onClick={() => props.update_canvas(props.filter)}/>

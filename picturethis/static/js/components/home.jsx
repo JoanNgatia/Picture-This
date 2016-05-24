@@ -1,7 +1,6 @@
 import { render } from 'react-dom'
 import React, {Component} from 'react';
 import OriginalPhotoList from './originalphotos.jsx';
-import EditedPhotoList from './editedphotos.jsx';
 import ImagePanel from './imagepanel.jsx';
 
 class Home extends React.Component {
@@ -19,8 +18,8 @@ class Home extends React.Component {
           <div className="row">
             <div className="col s12 m4 l3">
               <ul className="tabs">
-                <li className="tab col s6 active "><a href="#">Home</a></li>
-                <li className="tab col s6"><a href="#">Profile</a></li>
+                <li className="tab col s6 active "><a href="#">Originals</a></li>
+                <li className="tab col s6"><a href="#">Edits</a></li>
               </ul>
               <OriginalPhotoList />
             </div>
