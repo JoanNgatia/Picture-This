@@ -52,7 +52,6 @@ class EditedPhotoListView(generics.ListAPIView):
         List of all preview filter images
     """
 
-    # queryset = EditedPhoto.objects.all()
     serializer_class = EditedPhotoSerializer
     permission_classes = (AllowAny, )
 
