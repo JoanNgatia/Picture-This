@@ -66,7 +66,7 @@ class FinalPhotoView(generics.CreateAPIView):
     """Handle URL to access a single filter image for final saving.
 
     URL : /api/v1/photos/<photo_id>/edits/<preview_id>/saved/
-    Methods: GET
+    Methods: POST
     Args:
         photo_id = original photo id
         pk = preview photo id
