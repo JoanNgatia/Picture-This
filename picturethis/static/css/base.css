@@ -44,29 +44,65 @@ h3 {
     min-width: 750px;
 }
 
-body {
-    /*background: url('../img/artpaint.jpeg') no-repeat center center fixed;*/
+.background-image {
+    /*background-color: rgba(219, 25, 62, 0.31);*/
+    /*background: url('../img/ice_age.png') no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    display: block;
+    filter: blur(5px);
+    -webkit-filter: blur(1px);
+    height: 800px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 1;
+}
+
+.content {
+  /*background: rgba(255, 255, 255, 0.35);*/
+  /*border-radius: 3px;*/
+  /*box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);*/
+  /*font-family: Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  /*top: 10px;*/
+  left: 0;
+  position: fixed;
+  margin-left: 20px;
+  margin-right: 20px;
+  right: 0;
+  z-index: 2;
+  padding: 0 10px;
 }
 
 .thumbnails {
-    margin-top: 500px;
+    /*margin-top: 500px;*/
     /*overflow-y: hidden;*/
     /*overflow-x: scroll;*/
-    overflow: auto;
-    height: 11em;
-    background-color: #fafafa;
+    /*overflow: auto;*/
+    /*height: 11em;*/
+    /*background-color: #fafafa;*/
 }
 
 .filters {
-    height: 6em;
+    /*height: 6em;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
     margin: 1em;
-    width: 11em;
+    width: 11em;*/
+    margin-top: -77px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    overflow: auto;
+    height: 11em;
+    background-color: #fafafa;
+}
+
+.canvas {
+    margin-top: 20px;
+    height: 600px;
+    width: 800px;
 }
