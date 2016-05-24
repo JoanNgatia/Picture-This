@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
 
 from config import *
 
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
     'rest_framework_social_oauth2',
     # image processing
     'imagekit',
+    # testing
+    'django_nose',
     # internal apps
     'imageeditor',
 ]
@@ -187,3 +190,16 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.TemplateHTMLRenderer',
     ),
 }
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=imageeditor',
+]
+
+# Alter database to Cover regular testing and django-coverage
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'

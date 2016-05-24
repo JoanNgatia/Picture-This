@@ -17,3 +17,5 @@ picturethis/staticfiles
 npm-debug.log
 
 picturethis/picturethis/config.py
+
+.coverage

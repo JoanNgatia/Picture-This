@@ -62,11 +62,11 @@ class EditedPhotoListView(generics.ListAPIView):
         return EditedPhoto.objects.filter(parent_image=pk)
 
 
-class FinalPhotoView(generics.RetrieveAPIView):
+class FinalPhotoView(generics.CreateAPIView):
     """Handle URL to access a single filter image for final saving.
 
-    URL : /api/v1/photos/<photo_id>/edits/<preview_id>
-    Methods: GET
+    URL : /api/v1/photos/<photo_id>/edits/<preview_id>/saved/
+    Methods: POST
     Args:
         photo_id = original photo id
         pk = preview photo id
@@ -75,6 +75,7 @@ class FinalPhotoView(generics.RetrieveAPIView):
     """
 
     serializer_class = FinalPhotoSerializer
+    permission_classes = (AllowAny, )
 
     def get_queryset(self):
         """"Return single previews as per original photo id."""
