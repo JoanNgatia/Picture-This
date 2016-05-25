@@ -51,6 +51,10 @@ h3 {
     min-width: 100vw;
     background-size: cover;
 }
+
+.navigation {
+    background-color: #0097A7 !important;
+}
 /*dashboard view styling*/
 .filters {
     margin-top: -77px;
