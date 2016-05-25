@@ -2,22 +2,36 @@
 {% load staticfiles %}
 {% block content%}
 <div class="background-image">
-    <div class="row" id="social_login_div">
-        <div class="col s12 m4 l3">
+    <div class="row" id="social_login_div" align="center">
+        <!--div class="col s12 m4 l3">
             <img src="{% static 'img/camera-icon.png' %}">
         </div>
-        <div class="col s12 m8 l9">
+        <div class="col s12 m8 l9" id="loginbuttons">
             <h1>Picture-This</h1>
             <h3>Make your memories magical</h3>
             <div class="col" id="facebook_login">
                 <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="waves-effect waves-light btn" id="facebook_login_button"><i class="fa fa-facebook-official"></i> Login with Facebook</a>
             </div>
             <div class="col" id="twitter_login">
-                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="waves-effect waves-light btn"><i class="fa fa-twitter"></i> Login with Twitter</a>
+                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="waves-effect waves-light btn twittershare"><i class="fa fa-twitter"></i> Login with Twitter</a>
+            </div>
+        </div-->
+        <div class="">
+            <img src="{% static 'img/camera-icon.png' %}" class="icon">
+        </div>
+        <div class="" id="loginbuttons">
+            <h1>Picture-This</h1>
+            <h3>Make your memories magical</h3>
+            <div class="col s12 m6" id="facebook_login">
+                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="waves-effect waves-light btn" id="facebook_login_button"><i class="fa fa-facebook-official"></i> Login with Facebook</a>
+            </div>
+            <div class="col s12 m6" id="twitter_login">
+                <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="waves-effect waves-light btn twittershare"><i class="fa fa-twitter"></i> Login with Twitter</a>
             </div>
         </div>
 
     </div>
 </div>
+
 
 {% endblock %}

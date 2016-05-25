@@ -12,6 +12,15 @@ h3 {
 
 #facebook_login {
     padding-left: 0px;
+    padding-bottom: 10px;
+}
+
+#twitter_login {
+    padding-bottom: 10px;
+}
+
+.icon {
+    padding-top: 15px;
 }
 
 #facebook_login_button {
@@ -36,10 +45,12 @@ h3 {
 }
 
 #social_login_div {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.52);
     margin-top: 150px;
     margin-bottom: 0px;
     margin-left: 300px;
-    margin-right: auto;
+    margin-right: 800px;
     top: 244px;
     min-width: 750px;
 }
@@ -55,6 +66,17 @@ h3 {
 .navigation {
     background-color: #0097A7 !important;
 }
+
+.twittershare {
+    background-color: #4099FF !important;
+}
+
+#loginbuttons {
+  /*margin: 5%;*/
+  font-weight: bold;
+  color: #000000;
+}
+
 /*dashboard view styling*/
 .filters {
     margin-top: -77px;
