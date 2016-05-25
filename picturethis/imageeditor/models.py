@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 from effects import ImageEffects
 
 effects_list = {
@@ -32,8 +33,9 @@ class EditedPhoto(models.Model):
     """Base model for photos that have been edited and the preview."""
 
     image = models.TextField(max_length=250)
-    parent_image = models.ForeignKey(Photo)
+    parent_image = models.ForeignKey(Photo, on_delete=models.CASCADE)
     effect = models.CharField(max_length=80)
+    saved_image = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -42,6 +44,15 @@ class EditedPhoto(models.Model):
         """Extend parent meta class."""
 
         ordering = ['-updated_at']
+
+
+class FinalPhoto(models.Model):
+    """Base model to hold final edited photo."""
+
+    image = models.ImageField(upload_to='finalphotos/')
+    effect_applied = models.ForeignKey(EditedPhoto)
+
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 @receiver(post_save, sender=Photo)

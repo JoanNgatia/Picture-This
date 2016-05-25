@@ -1,0 +1,18 @@
+language: python
+python:
+  - "2.7"
+services:
+  - postgresql
+before_install:
+  - "pip install -r requirements.txt"
+install:
+  - "pip install coveralls"
+script:
+  - python picturethis/manage.py test --noinput
+after_success:
+  - coveralls
+branches:
+  only:
+  - ft-image-upload-117945603
+  - develop
+  - master

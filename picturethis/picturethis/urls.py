@@ -1,5 +1,4 @@
 """picturethis URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
 Examples:
@@ -15,14 +14,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-# from django.views.generic import TemplateView
+from imageeditor.views import LoginView
 import settings
 
 urlpatterns = [
     # django admin interface
     url(r'^admin/', admin.site.urls),
-    # React frontend
-    # url(r'^$', TemplateView.as_view(template_name='base.html')),
     # api endpoints
     url(r'^api/', include('imageeditor.urls')),
     # api documentation
@@ -31,10 +28,13 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT,
     }),
-    # social authentication
-    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
+
     # frontend routes
-    url(r'^$', 'imageeditor.views.login'),
+    url(r'^$', LoginView.as_view(), name="login"),
     url(r'^home/$', 'imageeditor.views.home'),
     url(r'^logout/$', 'imageeditor.views.logout'),
+
+    # social authentication
+    url('', include('social.apps.django_app.urls', namespace='social')),
 ]

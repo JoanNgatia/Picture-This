@@ -1,10 +1,12 @@
 from rest_framework import serializers
 
-from models import Photo, EditedPhoto
+from models import Photo, EditedPhoto, FinalPhoto
 
 
 class PhotoSerializer(serializers.ModelSerializer):
     """Define original photo serializer fields."""
+
+    image = serializers.ImageField(use_url=True)
 
     class Meta:
         model = Photo
@@ -19,4 +21,12 @@ class EditedPhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = EditedPhoto
         fields = ('id', 'image', 'parent_image', 'effect',
-                  'created_at', 'updated_at')
+                  'saved_image', 'created_at', 'updated_at')
+
+
+class FinalPhotoSerializer(serializers.ModelSerializer):
+    """Define final saved photo serializer fields."""
+
+    class Meta:
+        model = FinalPhoto
+        fields = ('image', 'effect_applied', 'created_at')
