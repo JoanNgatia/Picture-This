@@ -19,8 +19,8 @@ class ImagePanel extends React.Component {
 
   // set image render on component load on page
   componentWillMount(){
-      imageStore.addChangeListener(this._fetchSelectedPhoto);
-      imageStore.addChangeListener(this._fetchPreviewFilters)
+      imageStore.addChangeListener(this._fetchSelectedPhoto, 'select');
+      imageStore.addChangeListener(this._fetchPreviewFilters, 'preview')
   }
 
   // set selected photo on canvas
@@ -32,7 +32,6 @@ class ImagePanel extends React.Component {
   // collect all photos from server
     _fetchPreviewFilters(){
         let data = imageStore.getFilters();
-        // console.log(data);
         if(data) {
             this.setState({
                 filteredPhotos: data
@@ -92,7 +91,6 @@ class ImagePanel extends React.Component {
 
 //  render preview thumbnails
 const PreFilteredPhoto  = (props) => {
-      // console.log(props)
       return(
         <div className="col s3">
           <img src={props.body} width="150" height="100" onClick={() => props.update_canvas(props.filter)}/>

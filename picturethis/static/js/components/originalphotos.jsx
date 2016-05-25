@@ -19,14 +19,19 @@ class OriginalPhotoList extends React.Component {
 
     // set image render on component load on page
     componentWillMount(){
-        imageStore.addChangeListener(this._fetchOriginalPhotos);
         imageActions.getallphotos();
+    }
+
+    componentDidMount() {
+        imageStore.addChangeListener(this._fetchOriginalPhotos, 'photo');
+
     }
 
     // collect all photos from server
     _fetchOriginalPhotos(){
         let data = imageStore.getPhotos();
-        if(data) {
+        if(data !== {}) {
+            Materialize.toast('Welcome Back!', 4000);
             this.setState({
                 originalPhotos: data
             });
@@ -75,7 +80,6 @@ class OriginalPhotoList extends React.Component {
     // handle form submission
     _handleSubmit(event){
         event.preventDefault();
-        console.log(this.state.newPhoto);
         this._addphoto(this.state.newPhoto);
     }
 
@@ -83,7 +87,6 @@ class OriginalPhotoList extends React.Component {
     _handleChange(event){
         event.preventDefault();
         let photo =  event.target.value
-        console.log(photo);
         this.setState({newPhoto: photo})
     }
 

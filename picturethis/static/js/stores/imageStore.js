@@ -14,7 +14,7 @@ class ImageStore extends BaseStore {
 
     setPhotos(results) {
         photos = results;
-        this.emitChange();
+        this.emitChange('photo');
     }
 
     getPhotos() {
@@ -32,7 +32,7 @@ class ImageStore extends BaseStore {
 
     setFilters(results) {
         filters = results;
-        this.emitChange();
+        this.emitChange('preview');
     }
 
     getFilters() {
@@ -41,7 +41,7 @@ class ImageStore extends BaseStore {
 
     setSelectedPhoto(results) {
         selectedPhoto = results;
-        this.emitChange();
+        this.emitChange('select');
     }
 
     getSelectedPhoto() {
