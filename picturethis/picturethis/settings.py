@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     # social auth
     'oauth2_provider',
     'social.apps.django_app.default',
-    'rest_framework_social_oauth2',
     # image processing
     'imagekit',
     # testing

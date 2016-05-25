@@ -35,5 +35,5 @@ urlpatterns = [
     url(r'^home/$', 'imageeditor.views.home'),
     url(r'^logout/$', 'imageeditor.views.logout'),
     # social authentication
-    # url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('social.apps.django_app.urls', namespace='social')),
 ]
