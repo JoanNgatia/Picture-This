@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
-
+import os
+import shutil
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 
@@ -71,3 +72,10 @@ def apply_effect(sender, **kwargs):
                 to_save.parent_image = kwargs.get('instance')
                 to_save.effect = effect_type
                 to_save.save()
+
+
+@receiver(post_delete, sender=Photo)
+def delete_thumbnails(sender, **kwargs):
+    """Delete prerendered filters from storage files."""
+    # thumbnails = EditedPhoto.objects.filter(parent_image=Photo.pk)
+    # shutil.rmtree(thumbnails)
