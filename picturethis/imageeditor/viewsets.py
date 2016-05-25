@@ -65,7 +65,7 @@ class EditedPhotoUpdateView(generics.RetrieveUpdateAPIView):
     """Handle URL to save a particular filter thumbnail.
 
     URL : /api/v1/photos/<photo_id>/edits/<edits_id>/
-    Methods: PUT
+    Methods: GET PUT
     Args:
         photo_id = original photo id
         edits_id = filtered thumbnail id
