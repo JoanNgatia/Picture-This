@@ -25,7 +25,7 @@ class PhotoListView(generics.ListCreateAPIView):
     permission_classes = (AllowAny, )
 
 
-class PhotoDetailView(generics.RetrieveAPIView):
+class PhotoDetailView(generics.RetrieveDestroyAPIView):
     """Handle access to a particular photo.
 
     URL : /api/v1/photos/<photo_id>
@@ -62,7 +62,7 @@ class EditedPhotoListView(generics.ListAPIView):
 
 
 class EditedPhotoUpdateView(generics.RetrieveUpdateAPIView):
-    """Handle URL to save a particular filter thumbnail/
+    """Handle URL to save a particular filter thumbnail.
 
     URL : /api/v1/photos/<photo_id>/edits/<edits_id>/
     Methods: PUT
@@ -102,6 +102,4 @@ class FinalPhotoView(generics.CreateAPIView):
         """"Return single previews as per original photo id."""
         preview_id = self.kwargs.get('pk')
         photo_id = self.kwargs.get('photo_id')
-
-
         return EditedPhoto.objects.filter(id=preview_id, parent_image=photo_id)

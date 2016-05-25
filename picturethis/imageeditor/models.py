@@ -33,7 +33,7 @@ class EditedPhoto(models.Model):
     """Base model for photos that have been edited and the preview."""
 
     image = models.TextField(max_length=250)
-    parent_image = models.ForeignKey(Photo)
+    parent_image = models.ForeignKey(Photo, on_delete=models.CASCADE)
     effect = models.CharField(max_length=80)
     saved_image = models.BooleanField(default=False)
 
