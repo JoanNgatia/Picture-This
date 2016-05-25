@@ -88,16 +88,13 @@ class ImagePanel extends React.Component {
               <li><a className="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Edit photo"><i className="material-icons">mode_edit</i></a></li>
               <li><a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save" onClick={this._onSave}><i className="material-icons">save</i></a></li>
               <li><a className="btn-floating yellow tooltipped" data-position="left" data-delay="50" data-tooltip="Clear canvas"><i className="material-icons">layers_clear</i></a></li>
+              <li><FacebookShareButton url="https://www.facebook.com/sharer/sharer.php?u= + {props.photo.image}" title='image share' className="Demo__some-network__share-button">
+                  <FacebookIcon size={32} round /> </FacebookShareButton></li>
             </ul>
           </div>
-          <FacebookShareButton
-            url="https://www.facebook.com/sharer/sharer.php?u= + {props.photo.image}"
-            title='image share'
-            className="Demo__some-network__share-button">
-            <FacebookIcon
-              size={32}
-              round />
-          </FacebookShareButton>
+        </div>
+        <div className="fbshare">
+
         </div>
         <div className="filters row">
           {previewphotos}
