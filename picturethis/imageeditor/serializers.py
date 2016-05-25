@@ -21,7 +21,7 @@ class EditedPhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = EditedPhoto
         fields = ('id', 'image', 'parent_image', 'effect',
-                  'created_at', 'updated_at')
+                  'saved_image', 'created_at', 'updated_at')
 
 
 class FinalPhotoSerializer(serializers.ModelSerializer):

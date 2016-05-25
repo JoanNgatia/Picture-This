@@ -35,6 +35,7 @@ class EditedPhoto(models.Model):
     image = models.TextField(max_length=250)
     parent_image = models.ForeignKey(Photo)
     effect = models.CharField(max_length=80)
+    saved_image = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
