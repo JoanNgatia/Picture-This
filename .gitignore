@@ -19,3 +19,6 @@ npm-debug.log
 picturethis/picturethis/config.py
 
 .coverage
+
+# environment variables
+.env.yml
