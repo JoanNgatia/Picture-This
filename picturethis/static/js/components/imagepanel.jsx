@@ -4,6 +4,16 @@ import {OriginalPhoto} from './originalphotos.jsx';
 import imageStore from '../stores/imageStore';
 import * as imageActions from '../actions/imageActions';
 
+import {
+  ShareButtons,
+  generateShareIcon,
+} from 'react-share';
+const {
+  FacebookShareButton,
+  TwitterShareButton,
+} = ShareButtons;
+const FacebookIcon = generateShareIcon('facebook');
+
 class ImagePanel extends React.Component {
   // set original component state
   constructor(){
@@ -30,14 +40,14 @@ class ImagePanel extends React.Component {
   }
 
   // collect all photos from server
-    _fetchPreviewFilters(){
-        let data = imageStore.getFilters();
-        if(data) {
-            this.setState({
-                filteredPhotos: data
-            });
-        }
-    }
+  _fetchPreviewFilters(){
+      let data = imageStore.getFilters();
+      if(data) {
+          this.setState({
+              filteredPhotos: data
+          });
+      }
+  }
 
   // map out all photos returned from server to the single photo component with each having unique id
   _getpreviewPhotos(){
@@ -61,6 +71,9 @@ class ImagePanel extends React.Component {
   //   imageActions.savefinalimage(p, p2, p3);
   // }
 
+  // _shareImage(sel, event){
+  // }
+
   render() {
     const previewphotos = this._getpreviewPhotos();
     return(
@@ -73,11 +86,18 @@ class ImagePanel extends React.Component {
             </a>
             <ul>
               <li><a className="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Edit photo"><i className="material-icons">mode_edit</i></a></li>
-              <li><a className="btn-floating blue tooltipped" data-position="left" data-delay="50" data-tooltip="Share"><i className="material-icons">share</i></a></li>
               <li><a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save" onClick={this._onSave}><i className="material-icons">save</i></a></li>
               <li><a className="btn-floating yellow tooltipped" data-position="left" data-delay="50" data-tooltip="Clear canvas"><i className="material-icons">layers_clear</i></a></li>
             </ul>
           </div>
+          <FacebookShareButton
+            url="https://www.facebook.com/sharer/sharer.php?u= + {props.photo.image}"
+            title='image share'
+            className="Demo__some-network__share-button">
+            <FacebookIcon
+              size={32}
+              round />
+          </FacebookShareButton>
         </div>
         <div className="filters row">
           {previewphotos}
@@ -100,11 +120,13 @@ const PreFilteredPhoto  = (props) => {
 // render image in focus on canvas
 const Canvas = (props) => {
       return (
-        <div className="canvas">
-          {!props.photo.parent_image
-            ? <img src={props.photo.image} width="800" height="500"/>
-            : <img src={'http://localhost:8000/' + props.photo.image} width="800" height="500"/>
-          }
+        <div>
+          <div className="canvas">
+            {!props.photo.parent_image
+              ? <img src={props.photo.image} width="800" height="500"/>
+              : <img src={'http://localhost:8000/' + props.photo.image} width="800" height="500"/>
+            }
+          </div>
         </div>
       );
 }
