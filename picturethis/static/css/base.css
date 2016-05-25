@@ -52,7 +52,10 @@ h3 {
     margin-left: 300px;
     margin-right: 800px;
     top: 244px;
-    min-width: 750px;
+    min-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /*landing page styling*/
 .background-image {
