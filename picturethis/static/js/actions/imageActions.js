@@ -16,3 +16,7 @@ export function getimagefilters(id) {
 export function savefinalimage(photo_id, preview_id, effect) {
     BaseActions.put(`api/photos/${photo_id}/edits/${preview_id}`, constants.SAVE_FILTERED_PHOTO, {} )
 }
+
+export function deleteimage(id) {
+    BaseActions.delete(`/api/photos/${id}`, constants.DELETE_PHOTO)
+}

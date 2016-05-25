@@ -5,6 +5,7 @@ import BaseStore from './baseStore';
 let photos = null;
 let newPhoto = null;
 let filters = null;
+let deletedPhoto = null;
 let selectedPhoto = "./static/img/artpaint.jpeg";
 
 class ImageStore extends BaseStore {
@@ -47,6 +48,15 @@ class ImageStore extends BaseStore {
     getSelectedPhoto() {
         return selectedPhoto
     }
+
+    setDeletedPhoto(results) {
+        deletedPhoto = results;
+        this.emitChange('delete');
+    }
+
+    getDeletedPhoto() {
+        return deletedPhoto
+    }
 }
 
 let imageStore = new ImageStore();
@@ -61,6 +71,10 @@ imageStore.dispatchToken = Dispatcher.register(action => {
             break;
         case constants.GET_FILTERED_PHOTOS:
             imageStore.setFilters(action.data);
+            break;
+        case constants.DELETE_PHOTO:
+            imageStore.setDeletedPhoto(action.data);
+            break;
         default:
             return;
     }

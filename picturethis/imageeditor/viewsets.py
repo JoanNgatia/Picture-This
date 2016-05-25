@@ -29,7 +29,7 @@ class PhotoDetailView(generics.RetrieveDestroyAPIView):
     """Handle access to a particular photo.
 
     URL : /api/v1/photos/<photo_id>
-    Methods: GET
+    Methods: GET DELETE
     Args:
         pk = original photo id
     Returns:
