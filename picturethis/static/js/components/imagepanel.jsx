@@ -65,21 +65,19 @@ class ImagePanel extends React.Component {
     const previewphotos = this._getpreviewPhotos();
     return(
       <div>
-        <div className="fixed-action-btn">
-          <a className="btn-floating btn-large red">
-            <i className="large material-icons">more_vert</i>
-          </a>
-          <ul>
-            <li><a className="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Edit photo"><i className="material-icons">mode_edit</i></a></li>
-            <li><a className="btn-floating green"><i className="material-icons">publish</i></a></li>
-            <li><a className="btn-floating blue tooltipped" data-position="left" data-delay="50" data-tooltip="Clear canvas"><i className="material-icons">layers_clear</i></a></li>
-          </ul>
-        </div>
-        <div className="save">
-          <div className="btn" onClick={this._onSave}>Save</div>
-        </div>
         <div>
           <Canvas photo={this.state.selectedPhoto}/>
+          <div className="fixed-action-btn">
+            <a className="btn-floating btn-large red">
+              <i className="large material-icons">more_vert</i>
+            </a>
+            <ul>
+              <li><a className="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Edit photo"><i className="material-icons">mode_edit</i></a></li>
+              <li><a className="btn-floating blue tooltipped" data-position="left" data-delay="50" data-tooltip="Share"><i className="material-icons">share</i></a></li>
+              <li><a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save" onClick={this._onSave}><i className="material-icons">save</i></a></li>
+              <li><a className="btn-floating yellow tooltipped" data-position="left" data-delay="50" data-tooltip="Clear canvas"><i className="material-icons">layers_clear</i></a></li>
+            </ul>
+          </div>
         </div>
         <div className="filters row">
           {previewphotos}
@@ -92,9 +90,9 @@ class ImagePanel extends React.Component {
 //  render preview thumbnails
 const PreFilteredPhoto  = (props) => {
       return(
-        <div className="col s3">
+        <div className="previews">
           <img src={props.body} width="150" height="100" onClick={() => props.update_canvas(props.filter)}/>
-          <p>{props.effect_name}</p>
+          <p className="effect_name">{props.effect_name}</p>
         </div>
         );
 }

@@ -43,13 +43,21 @@ h3 {
     top: 244px;
     min-width: 750px;
 }
-
+/*landing page styling*/
+.background-image {
+    position: fixed;
+    background: url(../img/artpaint.jpeg)no-repeat center center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-size: cover;
+}
+/*dashboard view styling*/
 .filters {
     margin-top: -77px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 11em;
+    overflow-y: hidden;
+    overflow-x: scroll;
     background-color: #fafafa;
+    white-space: nowrap;
 }
 
 .canvas {
@@ -61,4 +69,19 @@ h3 {
 .photos-list {
     overflow: auto;
     height: 50em;
+}
+
+.previews {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.effect_name {
+    background-color: #b0bec5;
+    font-weight: bold;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 0em 3em 0em 3em;
+    position: relative;
+    text-align: center;
 }
