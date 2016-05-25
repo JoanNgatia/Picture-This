@@ -8,8 +8,8 @@ class Home extends React.Component {
       return (
         <div>
           <nav className="navigation">
-            <div className="nav-wrapper">
-              <a href="#!" className="brand-logo">Picture-This</a>
+            <div className="nav-wrapper" id="logo">
+              <a href="/home" className="brand-logo" >Picture-This</a>
               <ul className="right hide-on-med-and-down">
                 <li><a href="/logout">Log-Out <i className="fa fa-sign-out" aria-hidden="true"></i></a></li>
               </ul>

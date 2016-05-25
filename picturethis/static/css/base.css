@@ -75,12 +75,16 @@ h3 {
 }
 
 #loginbuttons {
-  /*margin: 5%;*/
   font-weight: bold;
   color: #000000;
 }
 
 /*dashboard view styling*/
+#logo {
+    font-family: 'Stalemate', cursive;
+    font-weight: bold;
+}
+
 .filters {
     margin-top: -77px;
     overflow-y: hidden;
