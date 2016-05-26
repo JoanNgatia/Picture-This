@@ -25,22 +25,27 @@ class OriginalPhotoList extends React.Component {
 
     componentDidMount() {
         imageStore.addChangeListener(this._fetchOriginalPhotos, 'photo');
-
+        imageStore.addChangeListener(this._fetchOriginalPhotos, 'delete');
     }
 
     // collect all photos from server
     _fetchOriginalPhotos(){
         let data = imageStore.getPhotos();
+        console.log('data:', data);
         if(data !== {}) {
             window.Materialize.toast('Welcome Back!', 2000, 'success-toast');
             this.setState({
                 originalPhotos: data
             });
+        } else {
+            if(data)
+            window.Materialize.toast('Please try again', 2000, 'error-toast');
         }
     }
 
     // map out all photos returned from server to the single photo component with each having unique id
     _getoriginalPhotos(){
+        console.log('mapping', this.state.originalPhotos);
         return this.state.originalPhotos.map((originalphoto) => {
             return (<OriginalPhoto
                 key={originalphoto.id}
@@ -68,7 +73,6 @@ class OriginalPhotoList extends React.Component {
         Object.keys(files).forEach((index) => {
             formData.append("image", files[index]);
         });
-        formData.append('owner',2);
         request
             .post('/api/photos/')
             .send(formData)
@@ -82,7 +86,6 @@ class OriginalPhotoList extends React.Component {
 
     // set selected photo to clicked photo
     updateSelectedImage(sel, event) {
-        console.log(sel)
         imageStore.setSelectedPhoto(sel)
         imageActions.getimagefilters(sel.id)
     }
@@ -113,7 +116,6 @@ class OriginalPhotoList extends React.Component {
                     <input type="file" name="image" id="files" onChange={this._handleChange.bind(this)}/>
                     <button className='btn btn-primary add-photo' type="submit">Upload new Photo</button>
                 </form>
-
                 {originalphotos}
             </div>
         );

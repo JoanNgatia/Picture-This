@@ -51,6 +51,7 @@ class ImageStore extends BaseStore {
 
     setDeletedPhoto(results) {
         deletedPhoto = results;
+        console.log('delete event', deletedPhoto);
         this.emitChange('delete');
     }
 
