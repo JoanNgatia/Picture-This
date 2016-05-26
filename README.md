@@ -1,6 +1,6 @@
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![Build Status](https://travis-ci.org/andela-jngatia/Picture-This.svg?branch=develop)](https://travis-ci.org/andela-jngatia/Picture-This)
-[![Build Status](https://travis-ci.org/andela-jngatia/Picture-This.svg?branch=develop)](https://travis-ci.org/andela-jngatia/Picture-This)
+[![Coverage Status](https://coveralls.io/repos/github/andela-jngatia/Picture-This/badge.svg?branch=develop)](https://coveralls.io/github/andela-jngatia/Picture-This?branch=develop)
 [![Code Health](https://landscape.io/github/andela-jngatia/Picture-This/develop/landscape.svg?style=flat)](https://landscape.io/github/andela-jngatia/Picture-This/develop)
 
 # Picture-This
