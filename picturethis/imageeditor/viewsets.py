@@ -24,6 +24,14 @@ class PhotoListView(generics.ListCreateAPIView):
     serializer_class = PhotoSerializer
     permission_classes = (AllowAny, )
 
+    # def get_queryset(self):
+    #     """Retrieve only the user's photos."""
+    #     return Photo.objects.filter(owner=self.request.user)
+
+    # def perform_create(self, serializer):
+    #     """Associate photo to an account,save data passed in request."""
+    #     serializer.save(owner=self.request.user)
+
 
 class PhotoDetailView(generics.RetrieveDestroyAPIView):
     """Handle access to a particular photo.
