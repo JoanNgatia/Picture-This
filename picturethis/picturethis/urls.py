@@ -28,13 +28,10 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT,
     }),
-    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
-
     # frontend routes
     url(r'^$', LoginView.as_view(), name="login"),
     url(r'^home/$', 'imageeditor.views.home'),
     url(r'^logout/$', 'imageeditor.views.logout'),
-
     # social authentication
     url('', include('social.apps.django_app.urls', namespace='social')),
 ]
