@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import sys
+import dj_database_url
 
 # from config import *
 
@@ -155,6 +156,8 @@ STATIC_ROOT = 'staticfiles'
 
 # Social authentication backends
 AUTHENTICATION_BACKENDS = (
+    # Django
+    'django.contrib.auth.backends.ModelBackend',
     'social.backends.google.GoogleOAuth2',
     'social.backends.twitter.TwitterOAuth',
     # Facebook OAuth2
@@ -162,10 +165,7 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
 
     # django-rest-framework-social-oauth2
-    'rest_framework_social_oauth2.backends.DjangoOAuth2',
-
-    # Django
-    'django.contrib.auth.backends.ModelBackend',
+    # 'rest_framework_social_oauth2.backends.DjangoOAuth2',
 )
 
 # Facebook and Twitter configuration
@@ -209,3 +209,7 @@ NOSE_ARGS = [
 # Alter database to Cover regular testing and django-coverage
 if 'test' in sys.argv or 'test_coverage' in sys.argv:
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+
+# Update database configuration with $DATABASE_URL.
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
