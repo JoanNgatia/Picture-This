@@ -16,6 +16,7 @@ django-rest-framework-social-oauth2==1.0.4
 djangorestframework==3.3.3
 drfdocs==0.0.9
 gnureadline==6.3.3
+gunicorn==19.6.0
 ipdb==0.9.3
 ipython==4.2.0
 ipython-genutils==0.1.0
