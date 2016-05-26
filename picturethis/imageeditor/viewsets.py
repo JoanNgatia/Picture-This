@@ -1,11 +1,13 @@
 """Defines the api endpoints for image creation, retrieval ,filtering."""
-
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.authentication import BasicAuthentication
 
 from models import Photo, EditedPhoto
 from serializers import PhotoSerializer, EditedPhotoSerializer, \
     FinalPhotoSerializer
+from authentication import CsrfExemptSessionAuthentication
 
 
 class PhotoListView(generics.ListCreateAPIView):
@@ -22,15 +24,18 @@ class PhotoListView(generics.ListCreateAPIView):
 
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
-    permission_classes = (AllowAny, )
+    permission_classes = (IsAuthenticated, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
 
-    # def get_queryset(self):
-    #     """Retrieve only the user's photos."""
-    #     return Photo.objects.filter(owner=self.request.user)
+    @csrf_exempt
+    def get_queryset(self):
+        """Retrieve only the user's photos."""
+        return Photo.objects.filter(owner=self.request.user)
 
-    # def perform_create(self, serializer):
-    #     """Associate photo to an account,save data passed in request."""
-    #     serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        """Associate photo to an account,save data passed in request."""
+        serializer.save(owner=self.request.user)
 
 
 class PhotoDetailView(generics.RetrieveDestroyAPIView):
@@ -46,7 +51,9 @@ class PhotoDetailView(generics.RetrieveDestroyAPIView):
 
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
-    permission_classes = (AllowAny, )
+    permission_classes = (IsAuthenticated, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
 
 
 class EditedPhotoListView(generics.ListAPIView):
@@ -61,7 +68,9 @@ class EditedPhotoListView(generics.ListAPIView):
     """
 
     serializer_class = EditedPhotoSerializer
-    permission_classes = (AllowAny, )
+    permission_classes = (IsAuthenticated, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
 
     def get_queryset(self):
         """"Return previews as per original photo id."""
@@ -82,7 +91,9 @@ class EditedPhotoUpdateView(generics.RetrieveUpdateAPIView):
     """
 
     serializer_class = EditedPhotoSerializer
-    permission_classes = (AllowAny, )
+    permission_classes = (IsAuthenticated, )
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
 
     def get_queryset(self):
         """"Return previews as per original photo id."""

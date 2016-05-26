@@ -12,7 +12,7 @@ class PhotoSerializer(serializers.ModelSerializer):
         model = Photo
         fields = ('id', 'owner', 'image',
                   'created_at', 'updated_at')
-        read_only_fields = ('id', 'created_at', 'updated_at')
+        read_only_fields = ('id', 'created_at', 'updated_at', 'owner')
 
 
 class EditedPhotoSerializer(serializers.ModelSerializer):
@@ -22,6 +22,8 @@ class EditedPhotoSerializer(serializers.ModelSerializer):
         model = EditedPhoto
         fields = ('id', 'image', 'parent_image', 'effect',
                   'saved_image', 'created_at', 'updated_at')
+        read_only_fields = ('id', 'image', 'effect', 'parent_image',
+                            'created_at', 'updated_at')
 
 
 class FinalPhotoSerializer(serializers.ModelSerializer):
