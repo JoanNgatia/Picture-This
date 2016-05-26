@@ -1,12 +1,12 @@
 h1 {
-    font-family: 'Stalemate', cursive;
+    font-family: 'Raleway';
     font-weight: bold;
     margin-top: auto;
 }
 
 h3 {
     font-size: 25px;
-    font-family: cursive;
+    font-family: 'Raleway';
     margin-top: 0px;
 }
 
@@ -81,8 +81,16 @@ h3 {
 
 /*dashboard view styling*/
 #logo {
-    font-family: 'Stalemate', cursive;
+    font-family: 'Raleway';
     font-weight: bold;
+}
+
+.add-photo {
+    background-color: #0097A7;
+}
+
+.tabs > .select{
+    color: #212121;
 }
 
 .filters {
