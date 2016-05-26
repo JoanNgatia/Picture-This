@@ -25,6 +25,7 @@ class ImagePanel extends React.Component {
     this._fetchPreviewFilters = this._fetchPreviewFilters.bind(this);
     this._fetchSelectedPhoto = this._fetchSelectedPhoto.bind(this);
     this.updateSelectedFilter = this.updateSelectedFilter.bind(this);
+    this._onSave = this._onSave.bind(this);
   }
 
   // set image render on component load on page
@@ -55,9 +56,10 @@ class ImagePanel extends React.Component {
           return (<PreFilteredPhoto
               key={filteredphoto.id}
               filter={filteredphoto}
-              body={'http://localhost:8000/' + filteredphoto.image}
+              body={window.location.origin + '/' + filteredphoto.image}
               effect_name={filteredphoto.effect}
               update_canvas={this.updateSelectedFilter}
+              save_image={this._onSave}
               />);
       });
   }
@@ -67,9 +69,10 @@ class ImagePanel extends React.Component {
         this.setState({selectedPhoto: sel})
   }
 
-  // _onSave () {
-  //   imageActions.savefinalimage(p, p2, p3);
-  // }
+  _onSave(sel, event) {
+    console.log(sel)
+    imageActions.savefinalimage(sel.parent_image, sel.id);
+  }
 
   // _shareImage(sel, event){
   // }
@@ -86,7 +89,6 @@ class ImagePanel extends React.Component {
             </a>
             <ul>
               <li><a className="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Edit photo"><i className="material-icons">mode_edit</i></a></li>
-              <li><a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save" onClick={this._onSave}><i className="material-icons">save</i></a></li>
               <li><a className="btn-floating yellow tooltipped" data-position="left" data-delay="50" data-tooltip="Clear canvas"><i className="material-icons">layers_clear</i></a></li>
               <li><FacebookShareButton url="https://www.facebook.com/sharer/sharer.php?u= + {props.photo.image}" title='image share' className="Demo__some-network__share-button">
                   <FacebookIcon size={32} round /> </FacebookShareButton></li>
@@ -121,7 +123,13 @@ const Canvas = (props) => {
           <div className="canvas">
             {!props.photo.parent_image
               ? <img src={props.photo.image} width="800" height="500"/>
-              : <img src={'http://localhost:8000/' + props.photo.image} width="800" height="500"/>
+              : <img src={window.location.origin + '/' + props.photo.image} width="800" height="500"/>
+            }
+          </div>
+          <div>
+            {!props.photo.parent_image
+              ?<a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save"><i className="material-icons">save</i></a>
+              :<a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save"  onClick={() => props.save_image(props.filter)}><i className="material-icons">save</i></a>
             }
           </div>
         </div>

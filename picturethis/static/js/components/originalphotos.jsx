@@ -31,7 +31,7 @@ class OriginalPhotoList extends React.Component {
     // collect all photos from server
     _fetchOriginalPhotos(){
         let data = imageStore.getPhotos();
-        console.log('data:', data);
+        // console.log('data:', data);
         if(data !== {}) {
             window.Materialize.toast('Welcome Back!', 2000, 'success-toast');
             this.setState({
@@ -45,7 +45,7 @@ class OriginalPhotoList extends React.Component {
 
     // map out all photos returned from server to the single photo component with each having unique id
     _getoriginalPhotos(){
-        console.log('mapping', this.state.originalPhotos);
+        // console.log('mapping', this.state.originalPhotos);
         return this.state.originalPhotos.map((originalphoto) => {
             return (<OriginalPhoto
                 key={originalphoto.id}
@@ -61,7 +61,7 @@ class OriginalPhotoList extends React.Component {
     }
 
     handleDelete(sel, event){
-        console.log(sel)
+        // console.log(sel)
         imageStore.setDeletedPhoto(sel)
         imageActions.deleteimage(sel.id)
     }
