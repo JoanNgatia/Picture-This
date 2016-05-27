@@ -9,6 +9,7 @@ install:
   - "pip install coveralls"
 script:
   - python picturethis/manage.py test --noinput
+  - python picturethis/manage.py test  imageeditor --noinput
 after_success:
   - coveralls
 branches:
