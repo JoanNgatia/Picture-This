@@ -2,7 +2,8 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.authentication import BasicAuthentication
+from rest_framework.authentication import BasicAuthentication, \
+    TokenAuthentication
 
 from models import Photo, EditedPhoto
 from serializers import PhotoSerializer, EditedPhotoSerializer, \
@@ -26,7 +27,8 @@ class PhotoListView(generics.ListCreateAPIView):
     serializer_class = PhotoSerializer
     permission_classes = (IsAuthenticated, )
     authentication_classes = (
-        CsrfExemptSessionAuthentication, BasicAuthentication)
+        CsrfExemptSessionAuthentication, BasicAuthentication,
+        TokenAuthentication)
 
     @csrf_exempt
     def get_queryset(self):
@@ -53,7 +55,8 @@ class PhotoDetailView(generics.RetrieveDestroyAPIView):
     serializer_class = PhotoSerializer
     permission_classes = (IsAuthenticated, )
     authentication_classes = (
-        CsrfExemptSessionAuthentication, BasicAuthentication)
+        CsrfExemptSessionAuthentication, BasicAuthentication,
+        TokenAuthentication)
 
 
 class EditedPhotoListView(generics.ListAPIView):
@@ -70,7 +73,8 @@ class EditedPhotoListView(generics.ListAPIView):
     serializer_class = EditedPhotoSerializer
     permission_classes = (IsAuthenticated, )
     authentication_classes = (
-        CsrfExemptSessionAuthentication, BasicAuthentication)
+        CsrfExemptSessionAuthentication, BasicAuthentication,
+        TokenAuthentication)
 
     def get_queryset(self):
         """"Return previews as per original photo id."""
@@ -93,7 +97,8 @@ class EditedPhotoUpdateView(generics.RetrieveUpdateAPIView):
     serializer_class = EditedPhotoSerializer
     permission_classes = (IsAuthenticated, )
     authentication_classes = (
-        CsrfExemptSessionAuthentication, BasicAuthentication)
+        CsrfExemptSessionAuthentication, BasicAuthentication,
+        TokenAuthentication)
 
     def get_queryset(self):
         """"Return previews as per original photo id."""

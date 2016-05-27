@@ -7,6 +7,7 @@ from imageeditor.models import Photo, EditedPhoto
 
 
 def get_temporary_image(temp_file):
+    """Generate dummy image file."""
     size = (200, 200)
     color = (255, 0, 0, 0)
     image = Image.new("RGBA", size, color)
@@ -24,12 +25,13 @@ class ImageEditorTest(TestCase):
 
     @override_settings(MEDIA_ROOT=tempfile.gettempdir())
     def test_dummy_test(self):
-            to_save = tempfile.NamedTemporaryFile(suffix=".jpg").name
-            test_image = get_temporary_image(to_save)
-            picture = Photo.objects.create(image=test_image, owner=self.owner)
-            search = Photo.objects.filter(image=test_image).first()
-            print "It Worked!, ", picture.image
-            self.assertEqual(len(Photo.objects.all()), 1)
-            self.assertEqual(len(EditedPhoto.objects.all()), 9)
-            self.assertIn(test_image, search.image.name)
-            self.assertIsInstance(picture, Photo)
+        """Check correct image upload and filter creation."""
+        to_save = tempfile.NamedTemporaryFile(suffix=".jpg").name
+        test_image = get_temporary_image(to_save)
+        picture = Photo.objects.create(image=test_image, owner=self.owner)
+        search = Photo.objects.filter(image=test_image).first()
+        print "It Worked!, ", picture.image
+        self.assertEqual(len(Photo.objects.all()), 1)
+        self.assertEqual(len(EditedPhoto.objects.all()), 9)
+        self.assertIn(test_image, search.image.name)
+        self.assertIsInstance(picture, Photo)
