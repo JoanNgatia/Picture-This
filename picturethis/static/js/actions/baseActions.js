@@ -1,8 +1,12 @@
 import Dispatcher from '../dispatcher/appDispatcher';
 import request from 'superagent';
+import toastr from 'toastr';
 
 class BaseActions {
     get(url, actionType, token = null) {
+        toastr.info('Loading your images...!', null, {
+              timeOut: 2000
+            });
         request
             .get(url)
             .set('Authorization', token)
@@ -19,6 +23,10 @@ class BaseActions {
             .delete(url)
             .set('Authorization', token)
             .end((err, result) => {
+                toastr.info('successfully removed ', {
+                    timeOut: 2000,
+                    closeButton: true
+                });
                 Dispatcher.dispatch({
                     actionType: actionType,
                     data: result.body
@@ -27,6 +35,9 @@ class BaseActions {
     }
 
     put(url, actionType, data, token = null) {
+        toastr.info('Updating ...', null, {
+          timeOut: 2000
+        });
         request
             .put(url)
             .send(data)

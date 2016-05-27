@@ -4,7 +4,8 @@ var BundleTracker = require('webpack-bundle-tracker');
 module.exports = {
     context: __dirname,
     entry: [
-      "./picturethis/static/js/app.jsx"
+      "./picturethis/static/js/app.jsx",
+      "./picturethis/static/js/main.js",
     ],
     devtool: 'eval',
     output: {

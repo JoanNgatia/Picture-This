@@ -105,6 +105,7 @@ h3 {
     margin-top: 20px;
     height: 600px;
     width: 800px;
+    /*background: url(../img/artpaint.jpeg)*/
 }
 
 .photos-list {
@@ -133,4 +134,13 @@ h3 {
 
 .success-toast {
   background-color: #00cc33;
+}
+
+.original-photos .card-image {
+    max-height: 75% !important;
+}
+
+.original-photos .card-content {
+    max-height: 25% !important;
+    padding: 10px !important;
 }

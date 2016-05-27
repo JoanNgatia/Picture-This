@@ -3,6 +3,8 @@ import request from 'superagent';
 import {OriginalPhoto} from './originalphotos.jsx';
 import imageStore from '../stores/imageStore';
 import * as imageActions from '../actions/imageActions';
+// import share from '../main.js';
+import * as h from '../main.js';
 
 import {
   ShareButtons,
@@ -91,9 +93,8 @@ class ImagePanel extends React.Component {
             <ul>
               <li><a className="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Edit photo"><i className="material-icons">mode_edit</i></a></li>
               <li><a className="btn-floating yellow tooltipped" data-position="left" data-delay="50" data-tooltip="Clear canvas"><i className="material-icons">layers_clear</i></a></li>
-              <li><FacebookShareButton url="https://www.facebook.com/sharer/sharer.php?u= + {props.photo.image}" title='image share' className="Demo__some-network__share-button">
-                  <FacebookIcon size={32} round /> </FacebookShareButton></li>
             </ul>
+
           </div>
         </div>
         <div className="fbshare">
@@ -127,6 +128,10 @@ const Canvas = (props) => {
               ? <img src={props.photo ? props.photo.image: this.state.selectedPhoto} width="800" height="500"/>
               : <img src={window.location.origin + '/' + props.photo.image} width="800" height="500"/>
             }
+            <div>
+
+            <a className="btn" onClick={h.share((props.photo.image).substring((props.photo.image).indexOf('media') -1))}></a>
+            </div>
           </div>
           :<div className="canvas col s9">
             <img src={window.location.origin + "/static/img/emptycanvas.jpg"} width="800" height="500"/>

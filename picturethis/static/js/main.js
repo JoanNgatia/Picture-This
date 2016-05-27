@@ -14,7 +14,7 @@ window.fbAsyncInit = function() {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-var share = function(url) {
+export function share(url){
   FB.ui({
     method: 'share',
     href: url,
