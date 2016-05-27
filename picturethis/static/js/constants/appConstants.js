@@ -4,5 +4,6 @@ module.exports = keyMirror({
     ADD_PHOTO: null,
     DELETE_PHOTO: null,
     GET_FILTERED_PHOTOS: null,
-    SAVE_FILTERED_PHOTO:null
+    SAVE_FILTERED_PHOTO:null,
+    DELETE_PHOTO_FROM_STORE:null,
 })

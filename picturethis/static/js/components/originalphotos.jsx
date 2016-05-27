@@ -31,7 +31,7 @@ class OriginalPhotoList extends React.Component {
     // collect all photos from server
     _fetchOriginalPhotos(){
         let data = imageStore.getPhotos();
-        // console.log('data:', data);
+        console.log('data:', data);
         if(data !== {}) {
             window.Materialize.toast('Welcome Back!', 2000, 'success-toast');
             this.setState({
@@ -62,8 +62,9 @@ class OriginalPhotoList extends React.Component {
 
     handleDelete(sel, event){
         // console.log(sel)
-        imageStore.setDeletedPhoto(sel)
+        // imageStore.setDeletedPhoto(sel)
         imageActions.deleteimage(sel.id)
+        imageActions.deleteimagefromstore(sel.id)
     }
 
     // send image data to the server
@@ -78,8 +79,9 @@ class OriginalPhotoList extends React.Component {
             .send(formData)
             .end(
                 (err, result) => {
+                console.log(result.body)
                 this.setState({
-                    originalPhotos: this.state.originalPhotos.concat(result.body)
+                    originalPhotos: [result.body, ...this.state.originalPhotos]
                 });
             });
     }

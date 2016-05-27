@@ -30,6 +30,7 @@ class ImagePanel extends React.Component {
 
   // set image render on component load on page
   componentWillMount(){
+      // this.setState({selectedPhoto: './static/img/artpaint.jpeg'})
       imageStore.addChangeListener(this._fetchSelectedPhoto, 'select');
       imageStore.addChangeListener(this._fetchPreviewFilters, 'preview')
   }
@@ -119,19 +120,18 @@ const PreFilteredPhoto  = (props) => {
 // render image in focus on canvas
 const Canvas = (props) => {
       return (
-        <div>
-          <div className="canvas">
+        <div className="row">
+        {props.photo
+          ?<div className="canvas col s9">
             {!props.photo.parent_image
-              ? <img src={props.photo.image} width="800" height="500"/>
+              ? <img src={props.photo ? props.photo.image: this.state.selectedPhoto} width="800" height="500"/>
               : <img src={window.location.origin + '/' + props.photo.image} width="800" height="500"/>
             }
           </div>
-          <div>
-            {!props.photo.parent_image
-              ?<a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save"><i className="material-icons">save</i></a>
-              :<a className="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Save"  onClick={() => props.save_image(props.filter)}><i className="material-icons">save</i></a>
-            }
+          :<div className="canvas col s9">
+            <img src={window.location.origin + "/static/img/emptycanvas.jpg"} width="800" height="500"/>
           </div>
+        }
         </div>
       );
 }

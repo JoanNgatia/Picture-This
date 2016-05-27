@@ -58,6 +58,12 @@ class ImageStore extends BaseStore {
     getDeletedPhoto() {
         return deletedPhoto
     }
+
+    deleteFromStore (id) {
+        photos = photos.filter((photo) => {
+            return photo.id !== id;
+        })
+    }
 }
 
 let imageStore = new ImageStore();
@@ -75,6 +81,9 @@ imageStore.dispatchToken = Dispatcher.register(action => {
             break;
         case constants.DELETE_PHOTO:
             imageStore.setDeletedPhoto(action.data);
+            break;
+        case constants.DELETE_PHOTO_FROM_STORE:
+            imageStore.deleteFromStore(action.id);
             break;
         default:
             return;

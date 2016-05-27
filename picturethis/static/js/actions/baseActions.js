@@ -51,7 +51,15 @@ class BaseActions {
                 });
             });
     }
+
+    deleteFromStore(id, actionType) {
+        Dispatcher.dispatch({
+            actionType,
+            id
+        });
+    }
 }
+
 
 let baseActions = new BaseActions();
 export default baseActions;
