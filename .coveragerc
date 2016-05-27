@@ -3,4 +3,5 @@ omit =
     */python?.?/*
     */site-packages/*
     *__init__*
-    */migrations/*
+    *migrations/*
+    *imageeditor/admin.py*
