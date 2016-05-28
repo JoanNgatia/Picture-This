@@ -2,6 +2,7 @@
 from django.shortcuts import render_to_response, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 from django.views.generic import TemplateView
 
 
@@ -13,7 +14,7 @@ class LoginView(TemplateView):
     def dispatch(self, request, *args, **kwargs):
         """Check that user has successfully been authenticated."""
         if request.user.is_authenticated():
-            return redirect('/home')
+            return redirect('/home', context_instance=RequestContext(request))
         return super(LoginView, self).dispatch(request, *args, **kwargs)
 
 
