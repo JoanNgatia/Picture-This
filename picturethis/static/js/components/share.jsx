@@ -36,12 +36,11 @@ const FaceBookApi = {
       method: 'feed',
       name: 'I just edited on image editor',
       display: 'popup',
-      link: window.location.origin,
+      link: window.location.origin || window.location.origin + source ,
       caption: 'Image editor is your instagram on web',
       picture: source,
       description: 'I just updated my image'
     }, res => {
-      debugger;
       console.log(res);
     });
   }
