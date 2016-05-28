@@ -14,6 +14,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.authtoken import views
 from imageeditor.views import LoginView
 import settings
 
@@ -24,6 +25,9 @@ urlpatterns = [
     url(r'^api/', include('imageeditor.urls')),
     # api documentation
     url(r'^docs/', include('rest_framework_docs.urls')),
+    # local api token
+    url(r'^api-token-auth/',
+        views.obtain_auth_token, name='token'),
     # media route
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT,
