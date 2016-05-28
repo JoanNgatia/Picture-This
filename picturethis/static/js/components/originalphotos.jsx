@@ -2,7 +2,7 @@ import React from 'react';
 import request from 'superagent';
 import imageStore from '../stores/imageStore';
 import * as imageActions from '../actions/imageActions';
-
+import toastr from 'toastr';
 
 class OriginalPhotoList extends React.Component {
     // set original component state
@@ -30,8 +30,9 @@ class OriginalPhotoList extends React.Component {
 
     // collect all photos from server
     _fetchOriginalPhotos(){
+        console.log(imageStore.getPhotos());
         let data = imageStore.getPhotos();
-        console.log('data:', data);
+        // console.log('data:', data);
         if(data !== {}) {
             this.setState({
                 originalPhotos: data
@@ -60,7 +61,6 @@ class OriginalPhotoList extends React.Component {
 
     handleDelete(sel, event){
         if (!confirm('Are you sure you want to delete this image')) return;
-        imageActions.deleteimage(sel.id)
         imageActions.deleteimagefromstore(sel.id)
     }
 
@@ -71,15 +71,27 @@ class OriginalPhotoList extends React.Component {
         Object.keys(files).forEach((index) => {
             formData.append("image", files[index]);
         });
+        toastr.info('Uploading your photo', null, {
+                      timeOut: 2000
+                    });
         request
             .post('/api/photos/')
             .send(formData)
             .end(
                 (err, result) => {
                 console.log('result',result.body)
-                this.setState({
-                    originalPhotos: [result.body, ...this.state.originalPhotos]
-                });
+                if(!err) {
+                    toastr.info('Successfully Uploaded', null, {
+                      timeOut: 2000
+                    });
+                    this.setState({
+                        originalPhotos: [result.body, ...this.state.originalPhotos]
+                    });
+                } else {
+                    toastr.warning('Oops please try again', null, {
+                      timeOut: 2000
+                    });
+                }
             });
     }
 

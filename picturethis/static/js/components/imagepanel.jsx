@@ -3,18 +3,19 @@ import request from 'superagent';
 import {OriginalPhoto} from './originalphotos.jsx';
 import imageStore from '../stores/imageStore';
 import * as imageActions from '../actions/imageActions';
+// import { FacebookButton, FacebookCount } from "react-social";
 // import share from '../main.js';
-import * as h from '../main.js';
-
-import {
-  ShareButtons,
-  generateShareIcon,
-} from 'react-share';
-const {
-  FacebookShareButton,
-  TwitterShareButton,
-} = ShareButtons;
-const FacebookIcon = generateShareIcon('facebook');
+// import * as h from '../main.js';
+import facebookApi from './share.jsx';
+// import {
+//   ShareButtons,
+//   generateShareIcon,
+// } from 'react-share';
+// const {
+//   FacebookShareButton,
+//   TwitterShareButton,
+// } = ShareButtons;
+// const FacebookIcon = generateShareIcon('facebook');
 
 class ImagePanel extends React.Component {
   // set original component state
@@ -28,19 +29,26 @@ class ImagePanel extends React.Component {
     this._fetchSelectedPhoto = this._fetchSelectedPhoto.bind(this);
     this.updateSelectedFilter = this.updateSelectedFilter.bind(this);
     this._onSave = this._onSave.bind(this);
+    this._onDeletePreview = this._onDeletePreview.bind(this);
+    this._shareImage = this._shareImage.bind(this);
   }
 
   // set image render on component load on page
   componentWillMount(){
       // this.setState({selectedPhoto: './static/img/artpaint.jpeg'})
       imageStore.addChangeListener(this._fetchSelectedPhoto, 'select');
-      imageStore.addChangeListener(this._fetchPreviewFilters, 'preview')
+      imageStore.addChangeListener(this._fetchPreviewFilters, 'preview');
+      imageStore.addChangeListener(this._onDeletePreview, 'delete');
   }
 
   // set selected photo on canvas
   _fetchSelectedPhoto() {
     let photo = imageStore.getSelectedPhoto();
     this.setState({selectedPhoto: photo})
+  }
+
+  _onDeletePreview(){
+    this.setState({selectedPhoto: undefined})
   }
 
   // collect all photos from server
@@ -80,12 +88,17 @@ class ImagePanel extends React.Component {
   // _shareImage(sel, event){
   // }
 
+  _shareImage() {
+    facebookApi.share(this.state.selectedPhoto.image);
+  }
+
   render() {
-    const previewphotos = this._getpreviewPhotos();
+    const previewphotos = this.state.selectedPhoto? this._getpreviewPhotos(): null;
+
     return(
       <div>
         <div>
-          <Canvas photo={this.state.selectedPhoto}/>
+          <Canvas photo={this.state.selectedPhoto} shareImage={this._shareImage}/>
           <div className="fixed-action-btn">
             <a className="btn-floating btn-large red">
               <i className="large material-icons">more_vert</i>
@@ -98,7 +111,6 @@ class ImagePanel extends React.Component {
           </div>
         </div>
         <div className="fbshare">
-
         </div>
         <div className="filters row">
           {previewphotos}
@@ -120,18 +132,16 @@ const PreFilteredPhoto  = (props) => {
 
 // render image in focus on canvas
 const Canvas = (props) => {
+      console.log(props.photo)
       return (
         <div className="row">
         {props.photo
           ?<div className="canvas col s9">
             {!props.photo.parent_image
-              ? <img src={props.photo ? props.photo.image: this.state.selectedPhoto} width="800" height="500"/>
+              ? <img src={props.photo.image} width="800" height="500"/>
               : <img src={window.location.origin + '/' + props.photo.image} width="800" height="500"/>
             }
-            <div>
-
-            <a className="btn" onClick={h.share((props.photo.image).substring((props.photo.image).indexOf('media') -1))}></a>
-            </div>
+            <a className="btn" onClick={props.shareImage}></a>
           </div>
           :<div className="canvas col s9">
             <img src={window.location.origin + "/static/img/emptycanvas.jpg"} width="800" height="500"/>

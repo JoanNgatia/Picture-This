@@ -18,7 +18,7 @@ class BaseActions {
             });
     }
 
-    delete(url, actionType, token = null) {
+    delete(url, cb, token = null) {
         request
             .delete(url)
             .set('Authorization', token)
@@ -27,10 +27,7 @@ class BaseActions {
                     timeOut: 2000,
                     closeButton: true
                 });
-                Dispatcher.dispatch({
-                    actionType: actionType,
-                    data: result.body
-                });
+                cb();
             });
     }
 
@@ -64,9 +61,12 @@ class BaseActions {
     }
 
     deleteFromStore(id, actionType) {
-        Dispatcher.dispatch({
+        //`/api/photos/${id}`
+        this.delete(`/api/photos/${id}`, ()=>{
+          Dispatcher.dispatch({
             actionType,
             id
+            });
         });
     }
 }

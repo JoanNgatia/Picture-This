@@ -2,68 +2,61 @@ import constants from '../constants/appConstants';
 import Dispatcher from '../dispatcher/appDispatcher';
 import BaseStore from './baseStore';
 
-let photos = null;
-let newPhoto = null;
-let filters = null;
-let deletedPhoto = null;
-let selectedPhoto = "./static/img/artpaint.jpeg";
 
 class ImageStore extends BaseStore {
     constructor(){
         super();
+        this.photos = null;
+        this.newPhoto = null;
+        this.filters = null;
+        this.deletedPhoto = null;
+        this.selectedPhoto = "./static/img/artpaint.jpeg";
     }
 
     setPhotos(results) {
-        photos = results;
+        this.photos = results;
         this.emitChange('photo');
     }
 
     getPhotos() {
-        return photos
+        return this.photos
     }
 
     setNewPhoto(results) {
-        newPhoto = results;
+        this.newPhoto = results;
         this.emitChange();
     }
 
     getNewPhoto() {
-        return newPhoto
+        return this.newPhoto
     }
 
     setFilters(results) {
-        filters = results;
+        this.filters = results;
         this.emitChange('preview');
     }
 
     getFilters() {
-        return filters
+        return this.filters
     }
 
     setSelectedPhoto(results) {
-        selectedPhoto = results;
+        this.selectedPhoto = results;
         this.emitChange('select');
     }
 
     getSelectedPhoto() {
-        return selectedPhoto
-    }
-
-    setDeletedPhoto(results) {
-        deletedPhoto = results;
-        console.log('delete event', deletedPhoto);
-        this.emitChange('delete');
-    }
-
-    getDeletedPhoto() {
-        return deletedPhoto
+        return this.selectedPhoto
     }
 
     deleteFromStore (id) {
-        photos = photos.filter((photo) => {
+        this.photos = this.photos.filter((photo) => {
             return photo.id !== id;
-        })
+        });
+        this.emitChange('delete');
     }
+
+
 }
 
 let imageStore = new ImageStore();
@@ -80,16 +73,13 @@ imageStore.dispatchToken = Dispatcher.register(action => {
             imageStore.setFilters(action.data);
             break;
         case constants.DELETE_PHOTO:
-            imageStore.setDeletedPhoto(action.data);
-            break;
-        case constants.DELETE_PHOTO_FROM_STORE:
             imageStore.deleteFromStore(action.id);
             break;
         default:
-            return;
+            break;
     }
 
-    imageStore.emitChange();
+    // imageStore.emitChange();
 });
 
 export default imageStore;
