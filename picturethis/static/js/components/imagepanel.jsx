@@ -7,7 +7,7 @@ import facebookApi from './share.jsx';
 
 
 class ImagePanel extends React.Component {
-  // set original component state
+  // set original component state and bind operational functions
   constructor(){
     super();
     this.state = {
@@ -22,7 +22,7 @@ class ImagePanel extends React.Component {
     this._shareImage = this._shareImage.bind(this);
   }
 
-  // set image render on component load on page
+  // Capture any events and dispatch changes to store
   componentWillMount(){
       imageStore.addChangeListener(this._fetchSelectedPhoto, 'select');
       imageStore.addChangeListener(this._fetchPreviewFilters, 'preview');
@@ -39,7 +39,7 @@ class ImagePanel extends React.Component {
     this.setState({selectedPhoto: undefined})
   }
 
-  // collect all photos from server
+  // collect all filters from server
   _fetchPreviewFilters(){
       let data = imageStore.getFilters();
       if(data) {
@@ -49,7 +49,7 @@ class ImagePanel extends React.Component {
       }
   }
 
-  // map out all photos returned from server to the single photo component with each having unique id
+  // map out all filters returned from server to the single photo component with each having unique id
   _getpreviewPhotos(){
       return this.state.filteredPhotos.map((filteredphoto) => {
           return (<PreFilteredPhoto
@@ -73,30 +73,17 @@ class ImagePanel extends React.Component {
     imageActions.savefinalimage(sel.parent_image, sel.id);
   }
 
-  // _shareImage(sel, event){
-  // }
-
+  // Handle image share to Facebook
   _shareImage() {
     facebookApi.share(this.state.selectedPhoto.image);
   }
 
   render() {
     const previewphotos = this.state.selectedPhoto? this._getpreviewPhotos(): null;
-
     return(
       <div>
         <div>
-          <Canvas photo={this.state.selectedPhoto} shareImage={this._shareImage}/>
-          <div className="fixed-action-btn">
-            <a className="btn-floating btn-large red">
-              <i className="large material-icons">more_vert</i>
-            </a>
-            <ul>
-              <li><a className="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Edit photo"><i className="material-icons">mode_edit</i></a></li>
-              <li><a className="btn-floating yellow tooltipped" data-position="left" data-delay="50" data-tooltip="Clear canvas"><i className="material-icons">layers_clear</i></a></li>
-            </ul>
-
-          </div>
+          <Canvas photo={this.state.selectedPhoto} shareImage={this._shareImage} clearCanvas={this._onDeletePreview}/>
         </div>
         <div className="fbshare">
         </div>
@@ -129,7 +116,8 @@ const Canvas = (props) => {
               ? <img src={props.photo.image} width="800" height="500"/>
               : <img src={window.location.origin + '/' + props.photo.image} width="800" height="500"/>
             }
-            <a className="btn" onClick={props.shareImage}></a>
+            <a className="btn" onClick={props.shareImage}>Facebook share</a>
+            <a className="btn" onClick={props.clearCanvas}>Clear Canvas</a>
           </div>
           :<div className="canvas col s9">
             <img src={window.location.origin + "/static/img/emptycanvas.jpg"} width="800" height="500"/>
