@@ -142,11 +142,12 @@ class OriginalPhotoList extends React.Component {
 
 // single photo component
 const OriginalPhoto  = (props) => {
-        console.log(props.photo.image)
-        let name = (props.photo.image).split("myphotos/")[1]
-        if (name.length < 20){
-            let name = name.slice(20) + name.split(".")[1]
-        }
+        // console.log(props.photo.image)
+        // let name = (props.photo.image).split("myphotos/")[1]
+        // if (name.length < 20){
+        //     let name = name.slice(20) + name.split(".")[1]
+        // }
+        let name = {props.photo.image}.split("myphotos/")[1]
         console.log(name);
         return(
             <div className="original-photos">
