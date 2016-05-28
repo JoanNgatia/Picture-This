@@ -61,7 +61,6 @@ class BaseActions {
     }
 
     deleteFromStore(id, actionType) {
-        //`/api/photos/${id}`
         this.delete(`/api/photos/${id}`, ()=>{
           Dispatcher.dispatch({
             actionType,

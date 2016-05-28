@@ -7,14 +7,6 @@ class Home extends React.Component {
   render(){
       return (
         <div>
-          <nav className="navigation">
-            <div className="nav-wrapper" id="logo">
-              <a href="/home" className="brand-logo" >Picture-This</a>
-              <ul className="right hide-on-med-and-down">
-                <li><a href="/logout">Log-Out <i className="fa fa-sign-out" aria-hidden="true"></i></a></li>
-              </ul>
-            </div>
-          </nav>
           <div className="row">
             <div className="col s12 m4 l3">
               <ul className="tabs">

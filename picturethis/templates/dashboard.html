@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+<nav class="navigation">
+    <div class="nav-wrapper" id="logo">
+      <a href="/home" class="brand-logo">Picture-This</a>
+      <ul class="right hide-on-med-and-down">
+        <li>Logged in as {{request.user.first_name}}</li>
+        <li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+</nav>
     <!--Entry point for React components-->
-    <section id="home"></section>
+<section id="home"></section>
 {% endblock %}

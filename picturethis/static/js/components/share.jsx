@@ -1,6 +1,3 @@
-// const fbId = document.querySelector('meta[name="fb-id"]')
-//                         .getAttribute('content');
-
 const FaceBookApi = {
   /**
   * initializes facebook API
@@ -33,11 +30,11 @@ const FaceBookApi = {
     console.log(source);
     FB.ui({
       method: 'feed',
-      name: 'I just used Picture-This',
+      name: 'Picture-This',
       display: 'popup',
       link: window.location.origin,
       caption: 'Picture-This, work those filters!!!',
-      picture: source || window.location.origin + source,
+      picture: source,
       description: 'I just edited my image.'
     }, res => {
       console.log(res);
