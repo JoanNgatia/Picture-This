@@ -85,7 +85,8 @@ class OriginalPhotoList extends React.Component {
                       timeOut: 2000
                     });
                     this.setState({
-                        originalPhotos: [result.body, ...this.state.originalPhotos]
+                        originalPhotos: [result.body, ...this.state.originalPhotos],
+                        newPhoto: ''
                     });
                 } else {
                     toastr.warning('Oops please try again', null, {
@@ -111,7 +112,8 @@ class OriginalPhotoList extends React.Component {
     _handleChange(event){
         event.preventDefault();
         let photo =  event.target.value
-        this.setState({newPhoto: photo})
+        this.setState({newPhoto: photo});
+        this._addphoto(this.state.newPhoto);
     }
 
 
@@ -124,8 +126,13 @@ class OriginalPhotoList extends React.Component {
         return(
             <div className="photos-list">
                 <form enctype="multipart/form-data" onSubmit={this._handleSubmit.bind(this)}>
-                    <input type="file" name="image" id="files" onChange={this._handleChange.bind(this)}/>
-                    <button className='btn btn-primary add-photo' type="submit">Upload new Photo</button>
+                    <div className="row">
+                        <input style={{marginRight: 15}} className="col s5" value={this.state.newPhoto} id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                        <div className="file-upload btn btn-primary col s6">
+                            <span>Upload</span>
+                            <input type="file" className="upload" name="image" id="files" onChange={this._handleChange.bind(this)}/>
+                        </div>
+                    </div>
                 </form>
                 {originalphotos}
             </div>

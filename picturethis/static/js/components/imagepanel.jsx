@@ -3,19 +3,8 @@ import request from 'superagent';
 import {OriginalPhoto} from './originalphotos.jsx';
 import imageStore from '../stores/imageStore';
 import * as imageActions from '../actions/imageActions';
-// import { FacebookButton, FacebookCount } from "react-social";
-// import share from '../main.js';
-// import * as h from '../main.js';
 import facebookApi from './share.jsx';
-// import {
-//   ShareButtons,
-//   generateShareIcon,
-// } from 'react-share';
-// const {
-//   FacebookShareButton,
-//   TwitterShareButton,
-// } = ShareButtons;
-// const FacebookIcon = generateShareIcon('facebook');
+
 
 class ImagePanel extends React.Component {
   // set original component state
@@ -35,7 +24,6 @@ class ImagePanel extends React.Component {
 
   // set image render on component load on page
   componentWillMount(){
-      // this.setState({selectedPhoto: './static/img/artpaint.jpeg'})
       imageStore.addChangeListener(this._fetchSelectedPhoto, 'select');
       imageStore.addChangeListener(this._fetchPreviewFilters, 'preview');
       imageStore.addChangeListener(this._onDeletePreview, 'delete');
