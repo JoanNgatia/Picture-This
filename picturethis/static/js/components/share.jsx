@@ -26,20 +26,19 @@ const FaceBookApi = {
     })(document, 'script', 'facebook-jssdk');
   },
   /**
-  * initializes facebook API
-  * @param {object} image the image object passed from the calling function
-  * @param {string} source the image ref source
+  * Utilize the Facebook SDK share function
+  * param(Source)- Image url
   */
   share: (source) => {
     console.log(source);
     FB.ui({
       method: 'feed',
-      name: 'I just edited on image editor',
+      name: 'I just used Picture-This',
       display: 'popup',
-      link: window.location.origin || window.location.origin + source ,
-      caption: 'Image editor is your instagram on web',
-      picture: source,
-      description: 'I just updated my image'
+      link: window.location.origin,
+      caption: 'Picture-This, work those filters!!!',
+      picture: source || window.location.origin + source,
+      description: 'I just edited my image.'
     }, res => {
       console.log(res);
     });
