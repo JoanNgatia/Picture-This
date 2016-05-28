@@ -32,7 +32,6 @@ class OriginalPhotoList extends React.Component {
     _fetchOriginalPhotos(){
         console.log(imageStore.getPhotos());
         let data = imageStore.getPhotos();
-        // console.log('data:', data);
         if(data !== {}) {
             this.setState({
                 originalPhotos: data
@@ -120,7 +119,7 @@ class OriginalPhotoList extends React.Component {
     componentWillUnmount(){
         imageStore.removeChangeListener(this._fetchOriginalPhotos);
     }
- // form for image upload
+
     render(){
         const originalphotos = this._getoriginalPhotos();
         return(
@@ -143,6 +142,11 @@ class OriginalPhotoList extends React.Component {
 
 // single photo component
 const OriginalPhoto  = (props) => {
+        let name = (props.photo.image).split("myphotos/")[1]
+        if (name.length < 20){
+            let name = name.slice(20) + name.split(".")[1]
+        }
+        console.log(name);
         return(
             <div className="original-photos">
                 <div className="card small">
@@ -151,12 +155,16 @@ const OriginalPhoto  = (props) => {
                     </div>
                     <div className="card-content">
                       <span className="card-title activator grey-text text-darken-4"><i className="material-icons right">more_vert</i></span>
-                      <p><a className="btn-floating red tooltipped" data-position="right" data-delay="50" data-tooltip="Delete" onClick={() => props.delete(props.photo)}><i className="material-icons">delete</i></a></p>
+                      <a className="tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={props.photo.image} target="_self" download={name}><i className="material-icons">cloud_download</i></a>
+                      <a style={{marginLeft: 15}} className="tooltipped" data-position="right" data-delay="50" data-tooltip="Delete" onClick={() => props.delete(props.photo)}><i className="material-icons">delete</i></a>
                     </div>
                     <div className="card-reveal">
                       <span className="card-title grey-text text-darken-4">Pic Details<i className="material-icons right">close</i></span>
                       <p>Uploader:
                         {props.uploader_id}
+                      </p>
+                      <p>Name:
+                        {name}
                       </p>
                       <p>Date Created:
                         {props.date_created}
