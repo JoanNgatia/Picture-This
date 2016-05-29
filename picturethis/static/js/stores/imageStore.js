@@ -79,7 +79,6 @@ imageStore.dispatchToken = Dispatcher.register(action => {
             break;
     }
 
-    // imageStore.emitChange();
 });
 
 export default imageStore;
