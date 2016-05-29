@@ -6,18 +6,18 @@ __pycache__/
 myphotos/
 editedphotos/
 
-# frontend dev related files
+# Frontend dev related files
 /node_modules
 
+# Bundle files
 webpack-stats.json
-
 picturethis/staticfiles
 
 npm-debug.log
 
-picturethis/picturethis/config.py
-
+# Test coverage report
 .coverage
 
-# environment variables
+# Environment variables
 .env.yml
+picturethis/picturethis/config.py
