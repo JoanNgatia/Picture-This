@@ -122,7 +122,8 @@ h3 {
 }
 
 .effect_name {
-    background-color: #b0bec5;
+    background-color: #0097A7;
+    font-family: 'Raleway';
     font-weight: bold;
     color: #ffffff;
     border-radius: 5px;
@@ -136,7 +137,7 @@ h3 {
 }
 
 .success-toast {
-  background-color: #00cc33;
+  background-color: #0097A7;
 }
 
 .original-photos .card-image {
@@ -153,6 +154,7 @@ h3 {
     overflow: hidden;
     margin: 10px;
     background-color: #0097A7 !important;
+    font-family: 'Raleway';
 }
 
 .file-upload input.upload {
@@ -169,5 +171,6 @@ h3 {
 
 .canvas .btn {
     background-color: #0097A7 !important;
+    font-family: 'Raleway';
 }
 /*End of dashboard view style*/
