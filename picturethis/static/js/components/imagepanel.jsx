@@ -24,6 +24,7 @@ class ImagePanel extends React.Component {
 
   // Capture any events and dispatch changes to store
   componentWillMount(){
+      facebookApi.init();
       imageStore.addChangeListener(this._fetchSelectedPhoto, 'select');
       imageStore.addChangeListener(this._fetchPreviewFilters, 'preview');
       imageStore.addChangeListener(this._onDeletePreview, 'delete');

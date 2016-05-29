@@ -147,7 +147,7 @@ const OriginalPhoto  = (props) => {
         // if (name.length < 20){
         //     let name = name.slice(20) + name.split(".")[1]
         // }
-        let name = {props.photo.image}.split("myphotos/")[1]
+        let name = (props.photo.image).split("myphotos/")[1]
         console.log(name);
         return(
             <div className="original-photos">
@@ -162,11 +162,11 @@ const OriginalPhoto  = (props) => {
                     </div>
                     <div className="card-reveal">
                       <span className="card-title grey-text text-darken-4">Pic Details<i className="material-icons right">close</i></span>
+                      <p>
+                        {name}
+                      </p>
                       <p>Uploader:
                         {props.uploader_id}
-                      </p>
-                      <p>Name:
-                        {name}
                       </p>
                       <p>Date Created:
                         {props.date_created}
