@@ -20,8 +20,6 @@ class ImageEffects(object):
 
     def enhancements(self, enhancement_type):
         """Handle enhancements on images.
-
-        Take in a float value to effect the enhancement.
         """
         enhancer = ImageEnhance.Sharpness(self.image)
         self.image = enhancer.enhance(enhancement_type['sharp'])
