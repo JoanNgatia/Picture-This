@@ -4,9 +4,7 @@ import toastr from 'toastr';
 
 class BaseActions {
     get(url, actionType, token = null) {
-        toastr.info('Loading your images...!', null, {
-              timeOut: 2000
-            });
+        window.Materialize.toast('Getting your images...', 2000, 'success-toast');
         request
             .get(url)
             .set('Authorization', token)
@@ -23,10 +21,7 @@ class BaseActions {
             .delete(url)
             .set('Authorization', token)
             .end((err, result) => {
-                toastr.info('successfully removed ', {
-                    timeOut: 2000,
-                    closeButton: true
-                });
+                window.Materialize.toast('successfully deleted...', 2000, 'success-toast');
                 cb();
             });
     }
