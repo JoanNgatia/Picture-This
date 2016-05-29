@@ -3,6 +3,7 @@ import request from 'superagent';
 import imageStore from '../stores/imageStore';
 import * as imageActions from '../actions/imageActions';
 import toastr from 'toastr';
+import facebookApi from './share.jsx';
 
 class OriginalPhotoList extends React.Component {
     // set original component state
@@ -16,10 +17,12 @@ class OriginalPhotoList extends React.Component {
         this._addphoto = this._addphoto.bind(this);
         this.updateSelectedImage = this.updateSelectedImage.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this._shareImage = this._shareImage.bind(this);
     }
 
     // set image render on component load on page
     componentWillMount(){
+        facebookApi.init();
         imageActions.getallphotos();
     }
 
@@ -30,7 +33,6 @@ class OriginalPhotoList extends React.Component {
 
     // collect all photos from server
     _fetchOriginalPhotos(){
-        console.log(imageStore.getPhotos());
         let data = imageStore.getPhotos();
         if(data !== {}) {
             this.setState({
@@ -54,6 +56,7 @@ class OriginalPhotoList extends React.Component {
                 date_updated={originalphoto.updated_at}
                 update={this.updateSelectedImage}
                 delete={this.handleDelete}
+                share={this._shareImage}
                 />);
         });
     }
@@ -70,27 +73,20 @@ class OriginalPhotoList extends React.Component {
         Object.keys(files).forEach((index) => {
             formData.append("image", files[index]);
         });
-        toastr.info('Uploading your photo', null, {
-                      timeOut: 2000
-                    });
+        window.Materialize.toast('Uploading your Photo...', 6500, 'success-toast');
         request
             .post('/api/photos/')
             .send(formData)
             .end(
                 (err, result) => {
-                console.log('result',result.body)
                 if(!err) {
-                    toastr.info('Successfully Uploaded', null, {
-                      timeOut: 2000
-                    });
+                    window.Materialize.toast('Successfully Uploaded', 2000, 'success-toast');
                     this.setState({
                         originalPhotos: [result.body, ...this.state.originalPhotos],
                         newPhoto: ''
                     });
                 } else {
-                    toastr.warning('Oops please try again', null, {
-                      timeOut: 2000
-                    });
+                    window.Materialize.toast('Oops please try again', 2000, 'error-toast');
                 }
             });
     }
@@ -115,6 +111,10 @@ class OriginalPhotoList extends React.Component {
         this._addphoto(this.state.newPhoto);
     }
 
+    // Handle image share to Facebook
+    _shareImage(sel, event) {
+        facebookApi.share(sel.image);
+    }
 
     componentWillUnmount(){
         imageStore.removeChangeListener(this._fetchOriginalPhotos);
@@ -142,13 +142,7 @@ class OriginalPhotoList extends React.Component {
 
 // single photo component
 const OriginalPhoto  = (props) => {
-        // console.log(props.photo.image)
-        // let name = (props.photo.image).split("myphotos/")[1]
-        // if (name.length < 20){
-        //     let name = name.slice(20) + name.split(".")[1]
-        // }
         let name = (props.photo.image).split("myphotos/")[1]
-        console.log(name);
         return(
             <div className="original-photos">
                 <div className="card small">
@@ -159,6 +153,7 @@ const OriginalPhoto  = (props) => {
                       <span className="card-title activator grey-text text-darken-4"><i className="material-icons right">more_vert</i></span>
                       <a className="tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={props.photo.image} target="_self" download={name}><i className="material-icons">cloud_download</i></a>
                       <a style={{marginLeft: 15}} className="tooltipped" data-position="right" data-delay="50" data-tooltip="Delete" onClick={() => props.delete(props.photo)}><i className="material-icons">delete</i></a>
+                      <a style={{marginLeft: 15}} className="tooltipped" data-position="right" data-delay="50" data-tooltip="Share" onClick={() => props.share(props.photo)}><i className="material-icons">share</i></a>
                     </div>
                     <div className="card-reveal">
                       <span className="card-title grey-text text-darken-4">Pic Details<i className="material-icons right">close</i></span>

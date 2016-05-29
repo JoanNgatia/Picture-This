@@ -27,7 +27,6 @@ const FaceBookApi = {
   * param(Source)- Image url
   */
   share: (source) => {
-    console.log(source);
     FB.ui({
       method: 'feed',
       name: 'Picture-This',

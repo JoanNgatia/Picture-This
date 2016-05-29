@@ -10,8 +10,7 @@ class Home extends React.Component {
           <div className="row">
             <div className="col s12 m4 l3">
               <ul className="tabs">
-                <li className="tab select col s6 active "><a href="#">Originals</a></li>
-                <li className="tab select col s6"><a href="#">Edits</a></li>
+                <li className="tab select col s6 active"><a href="#">Your Photos</a></li>
               </ul>
               <OriginalPhotoList />
             </div>

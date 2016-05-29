@@ -108,7 +108,7 @@ const PreFilteredPhoto  = (props) => {
 
 // render image in focus on canvas
 const Canvas = (props) => {
-      console.log(props.photo)
+      console.log(props.photo.image)
       return (
         <div className="row">
         {props.photo
@@ -119,6 +119,10 @@ const Canvas = (props) => {
             }
             <a className="btn" onClick={props.shareImage}>Facebook share</a>
             <a className="btn" onClick={props.clearCanvas}>Clear Canvas</a>
+             {!props.photo.parent_image
+               ?<a className="tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={props.photo.image} target="_self" download="filter.jpeg"><i className="material-icons">cloud_download</i></a>
+               :<a className="tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={window.location.origin + '/' + props.photo.image} target="_self" download="filter.jpeg"><i className="material-icons">cloud_download</i></a>
+             }
           </div>
           :<div className="canvas col s9">
             <img src={window.location.origin + "/static/img/emptycanvas.jpg"} width="800" height="500"/>
