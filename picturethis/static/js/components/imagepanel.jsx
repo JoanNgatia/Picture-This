@@ -70,7 +70,6 @@ class ImagePanel extends React.Component {
   }
 
   _onSave(sel, event) {
-    console.log(sel)
     imageActions.savefinalimage(sel.parent_image, sel.id);
   }
 
