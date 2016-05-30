@@ -1,0 +1,1 @@
+web: python picturethis/manage.py migrate; gunicorn picturethis.wsgi --pythonpath=picturethis --log-file -

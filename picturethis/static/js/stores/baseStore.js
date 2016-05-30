@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 
-class BaseStore extends EventEmitter  {
+export default class BaseStore extends EventEmitter  {
     constructor(){
         super();
     }
@@ -31,4 +31,3 @@ class BaseStore extends EventEmitter  {
 }
 
 BaseStore.dispatchToken = null;
-export default BaseStore;

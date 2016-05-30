@@ -1,6 +1,18 @@
-from django.test import TestCase, RequestFactory
-from imageeditor.models import Photo, EditedPhoto, FinalPhoto
+import tempfile
+
+from django.contrib.auth.models import User
+from django.test import TestCase, override_settings
 from PIL import Image
+from imageeditor.models import Photo, EditedPhoto
+
+
+def get_temporary_image(temp_file):
+    """Generate dummy image file."""
+    size = (200, 200)
+    color = (255, 0, 0, 0)
+    image = Image.new("RGBA", size, color)
+    image.save(temp_file, 'jpeg')
+    return temp_file
 
 
 class ImageEditorTest(TestCase):
@@ -8,9 +20,18 @@ class ImageEditorTest(TestCase):
 
     def setUp(self):
         """Set up new dummy data."""
+        user = User.objects.create(username='test', password='test')
+        self.owner = User.objects.filter(id=user.id).first()
 
-    def tearDown(self):
-        """Clean up database after successful test run."""
-        Photo.objects.all().delete()
-        EditedPhoto.objects.all().delete()
-        FinalPhoto.objects.all().delete()
+    @override_settings(MEDIA_ROOT=tempfile.gettempdir())
+    def test_dummy_test(self):
+        """Check correct image upload and filter creation."""
+        to_save = tempfile.NamedTemporaryFile(suffix=".jpg").name
+        test_image = get_temporary_image(to_save)
+        picture = Photo.objects.create(image=test_image, owner=self.owner)
+        search = Photo.objects.filter(image=test_image).first()
+        self.assertEqual(len(Photo.objects.all()), 1)
+        self.assertEqual(len(EditedPhoto.objects.all()), 10)
+        self.assertTrue(EditedPhoto.objects.get(effect='invert'))
+        self.assertIn(test_image, search.image.name)
+        self.assertIsInstance(picture, Photo)

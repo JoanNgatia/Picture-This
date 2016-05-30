@@ -8,11 +8,12 @@ before_install:
 install:
   - "pip install coveralls"
 script:
-  - python picturethis/manage.py test --noinput
+  - python picturethis/manage.py test  imageeditor --noinput
 after_success:
   - coveralls
 branches:
   only:
   - ft-image-upload-117945603
+  - ch-code-refactor-120224701
   - develop
   - master

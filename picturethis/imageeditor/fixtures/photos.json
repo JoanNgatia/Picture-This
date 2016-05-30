@@ -16,25 +16,5 @@
                 },
             "model": "auth.user",
             "pk": 1
-    },
-    {
-        "fields":{
-                "owner": 1,
-                "image": "myphotos/jump.jpeg",
-                "created_at": "2016-05-10 18:47:59.796096+03",
-                "updated_at": "2016-05-10 22:18:31.753505+03"
-                },
-            "model": "imageeditor.Photo",
-            "pk": 66
-    },
-    {
-        "fields":{
-                "owner": 1,
-                "image": "myphotos/lists.jpeg",
-                "created_at": "2016-05-10 23:17:37.845131+03",
-                "updated_at": "2016-05-10 23:23:26.637743+03"
-                },
-            "model": "imageeditor.Photo",
-            "pk": 72
     }
 ]
