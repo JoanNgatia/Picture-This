@@ -15,7 +15,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework.authtoken import views
-from imageeditor.views import LoginView
+from imageeditor.views import LoginView, HomeView
 import settings
 
 urlpatterns = [
@@ -34,7 +34,7 @@ urlpatterns = [
     }),
     # frontend routes
     url(r'^$', LoginView.as_view(), name="login"),
-    url(r'^home/$', 'imageeditor.views.home'),
+    url(r'^home/$', HomeView.as_view(), name="login"),
     url(r'^logout/$', 'imageeditor.views.logout'),
     # social authentication
     url('', include('social.apps.django_app.urls', namespace='social')),
