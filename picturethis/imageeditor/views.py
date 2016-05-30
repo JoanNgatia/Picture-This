@@ -1,5 +1,5 @@
 """Use django default views to handle login/logout."""
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -30,6 +30,8 @@ class LoginView(TemplateView):
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
+    """Handle successful redirect to dashboard with React components."""
+
     template_name = 'dashboard.html'
 
     def get_context_data(self, **kwargs):
