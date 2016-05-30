@@ -48,18 +48,16 @@ class PhotoAPITest(APITestCase):
             )
         self.assertEqual(auth_response.status_code, 201)
         self.assertEqual(Photo.objects.count(), 1)
-        self.assertEqual(EditedPhoto.objects.count(), 9)
+        self.assertEqual(EditedPhoto.objects.count(), 10)
 
         get_response = self.client.get('/api/photos/1/')
         self.assertEqual(get_response.status_code, 200)
 
         edits_response = self.client.get('/api/photos/1/edits/')
         self.assertEqual(edits_response.status_code, 200)
-        self.assertEqual(len(edits_response.data), 9)
+        self.assertEqual(len(edits_response.data), 10)
 
         delete_response = self.client.delete('/api/photos/1/')
         self.assertEqual(delete_response.status_code, 204)
         self.assertEqual(Photo.objects.count(), 0)
         self.assertEqual(len(EditedPhoto.objects.filter(parent_image=1)), 0)
-
-

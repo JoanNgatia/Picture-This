@@ -8,7 +8,7 @@ from django.dispatch import receiver
 from effects import ImageEffects
 
 effects_list = {
-    'filters': ['blur', 'contour', 'detail', 'emboss', 'smooth'],
+    'filters': ['blur', 'contour', 'detail', 'emboss', 'smooth', 'sharpen'],
     'operations': ['flip', 'grayscale', 'invert', 'mirror']
 }
 

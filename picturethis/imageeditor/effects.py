@@ -18,20 +18,6 @@ class ImageEffects(object):
         self.file_path = path + \
             effect + os.path.basename(self.image_name)
 
-    def enhancements(self, enhancement_type):
-        """Handle enhancements on images.
-        """
-        enhancer = ImageEnhance.Sharpness(self.image)
-        self.image = enhancer.enhance(enhancement_type['sharp'])
-
-        enhancer = ImageEnhance.Contrast(self.image)
-        self.image = enhancer.enhance(enhancement_type['contrast'])
-
-        enhancer = ImageEnhance.Brightness(self.image)
-        self.image = enhancer.enhance(enhancement_type['bright'])
-
-        self.image.save()
-
     def filters(self):
         """Handle Filters on images."""
         if self.effect == 'blur':
@@ -44,6 +30,8 @@ class ImageEffects(object):
             to_save = self.image.filter(ImageFilter.DETAIL)
         if self.effect == 'smooth':
             to_save = self.image.filter(ImageFilter.SMOOTH)
+        if self.effect == 'sharpen':
+            to_save = self.image.filter(ImageFilter.SHARPEN)
         to_save.save(self.file_path)
         return self.file_path
 

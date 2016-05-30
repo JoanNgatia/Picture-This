@@ -30,8 +30,8 @@ class ImageEditorTest(TestCase):
         test_image = get_temporary_image(to_save)
         picture = Photo.objects.create(image=test_image, owner=self.owner)
         search = Photo.objects.filter(image=test_image).first()
-        print "It Worked!, ", picture.image
         self.assertEqual(len(Photo.objects.all()), 1)
-        self.assertEqual(len(EditedPhoto.objects.all()), 9)
+        self.assertEqual(len(EditedPhoto.objects.all()), 10)
+        self.assertTrue(EditedPhoto.objects.get(effect='invert'))
         self.assertIn(test_image, search.image.name)
         self.assertIsInstance(picture, Photo)

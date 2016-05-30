@@ -30,7 +30,7 @@ urlpatterns = [
     }),
     # frontend routes
     url(r'^$', LoginView.as_view(), name="login"),
-    url(r'^home/$', HomeView.as_view(), name="login"),
+    url(r'^home/$', HomeView.as_view(), name="home"),
     url(r'^logout/$', 'imageeditor.views.logout'),
     # social authentication
     url('', include('social.apps.django_app.urls', namespace='social')),
