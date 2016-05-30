@@ -171,9 +171,18 @@ h3 {
 .canvas .btn {
     background-color: #0097A7 !important;
     font-family: 'Raleway';
+    margin-left: 25%;
 }
 
 #contain {
     object-fit: contain;
+}
+
+a.delete {
+    color: #EE6E73;
+}
+
+a.download {
+    color: #008000;
 }
 /*End of dashboard view style*/

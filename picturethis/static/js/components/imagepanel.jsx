@@ -110,7 +110,7 @@ const Canvas = (props) => {
       return (
         <div className="row">
         {props.photo
-          ?<div className="canvas col s9">
+          ?<div className="canvas col s9 offset-s1">
             {!props.photo.parent_image
               ? <img src={props.photo.image} id="contain" width="800" height="500"/>
               : <img src={window.location.origin + '/' + props.photo.image} id="contain" width="800" height="500"/>
@@ -119,9 +119,9 @@ const Canvas = (props) => {
                ?<a className="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={props.photo.image} target="_self" download="filter.jpeg"><i className="material-icons left">cloud_download</i>Download</a>
                :<a className="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={window.location.origin + '/' + props.photo.image} target="_self" download="filter.jpeg"><i className="material-icons left">cloud_download</i>Download</a>
             }
-            <a style={{marginLeft: 15}} className="btn" onClick={props.clearCanvas}><i className="material-icons left">layers_clear</i>Clear Canvas</a>
+            <a style={{marginLeft: 15}} className="btn"  onClick={props.clearCanvas}><i className="material-icons left">layers_clear</i>Clear Canvas</a>
           </div>
-          :<div className="canvas col s9">
+          :<div className="canvas col s9 offset-s1">
             <img src={window.location.origin + "/static/img/emptycanvas.jpg"} id="contain" width="800" height="500"/>
           </div>
         }

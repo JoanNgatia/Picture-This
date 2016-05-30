@@ -126,8 +126,8 @@ class OriginalPhotoList extends React.Component {
             <div className="photos-list">
                 <form enctype="multipart/form-data" onSubmit={this._handleSubmit.bind(this)}>
                     <div className="row">
-                        <input style={{marginRight: 15}} className="col s5" value={this.state.newPhoto} id="uploadFile" placeholder="Choose File" disabled="disabled" />
-                        <div className="file-upload btn btn-primary col s6">
+                        <input style={{marginRight: 15, fontSize:'90%'}} className="col s5" value={this.state.newPhoto} id="uploadFile" placeholder="No file selected" disabled />
+                        <div className="file-upload btn btn-primary tooltipped col s6">
                             <span>Upload</span>
                             <input type="file" className="upload" name="image" id="files" onChange={this._handleChange.bind(this)}/>
                         </div>
@@ -151,9 +151,9 @@ const OriginalPhoto  = (props) => {
                     </div>
                     <div className="card-content">
                       <span className="card-title activator grey-text text-darken-4"><i className="material-icons right">more_vert</i></span>
-                      <a className="tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={props.photo.image} target="_self" download={name}><i className="material-icons">cloud_download</i></a>
-                      <a style={{marginLeft: 15}} className="tooltipped" data-position="right" data-delay="50" data-tooltip="Delete" onClick={() => props.delete(props.photo)}><i className="material-icons">delete</i></a>
-                      <a style={{marginLeft: 15}} className="tooltipped" data-position="right" data-delay="50" data-tooltip="Share" onClick={() => props.share(props.photo)}><i className="material-icons">share</i></a>
+                      <a className="download tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={props.photo.image} target="_self" download={name}><i className="material-icons">cloud_download</i></a>
+                      <a style={{marginLeft: 15}} className="delete tooltipped" data-position="right" data-delay="50" data-tooltip="Delete" onClick={() => props.delete(props.photo)} href="#"><i className="material-icons">delete</i></a>
+                      <a style={{marginLeft: 15}} className="tooltipped" data-position="right" data-delay="50" data-tooltip="Share" onClick={() => props.share(props.photo)} href="#"><i className="material-icons">share</i></a>
                     </div>
                     <div className="card-reveal">
                       <span className="card-title grey-text text-darken-4">Pic Details<i className="material-icons right">close</i></span>
