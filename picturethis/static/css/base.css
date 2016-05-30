@@ -173,4 +173,8 @@ h3 {
     background-color: #0097A7 !important;
     font-family: 'Raleway';
 }
+
+#contain {
+    object-fit: contain;
+}
 /*End of dashboard view style*/

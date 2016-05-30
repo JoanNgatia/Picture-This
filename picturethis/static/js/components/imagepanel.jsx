@@ -112,8 +112,8 @@ const Canvas = (props) => {
         {props.photo
           ?<div className="canvas col s9">
             {!props.photo.parent_image
-              ? <img src={props.photo.image} width="800" height="500"/>
-              : <img src={window.location.origin + '/' + props.photo.image} width="800" height="500"/>
+              ? <img src={props.photo.image} id="contain" width="800" height="500"/>
+              : <img src={window.location.origin + '/' + props.photo.image} id="contain" width="800" height="500"/>
             }
             {!props.photo.parent_image
                ?<a className="btn tooltipped" data-position="right" data-delay="50" data-tooltip="Download" href={props.photo.image} target="_self" download="filter.jpeg"><i className="material-icons left">cloud_download</i>Download</a>
@@ -122,7 +122,7 @@ const Canvas = (props) => {
             <a style={{marginLeft: 15}} className="btn" onClick={props.clearCanvas}><i className="material-icons left">layers_clear</i>Clear Canvas</a>
           </div>
           :<div className="canvas col s9">
-            <img src={window.location.origin + "/static/img/emptycanvas.jpg"} width="800" height="500"/>
+            <img src={window.location.origin + "/static/img/emptycanvas.jpg"} id="contain" width="800" height="500"/>
           </div>
         }
         </div>
