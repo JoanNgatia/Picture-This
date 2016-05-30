@@ -99,7 +99,7 @@ class ImagePanel extends React.Component {
 const PreFilteredPhoto  = (props) => {
       return(
         <div className="previews">
-          <img src={props.body} width="150" height="100" onClick={() => props.update_canvas(props.filter)}/>
+          <img src={props.body} id="contain" width="150" height="100" onClick={() => props.update_canvas(props.filter)}/>
           <p className="effect_name">{props.effect_name}</p>
         </div>
         );
