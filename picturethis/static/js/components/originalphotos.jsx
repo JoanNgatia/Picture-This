@@ -73,7 +73,7 @@ class OriginalPhotoList extends React.Component {
         Object.keys(files).forEach((index) => {
             formData.append("image", files[index]);
         });
-        window.Materialize.toast('Uploading your Photo...', 6500, 'success-toast');
+        window.Materialize.toast('Uploading your Photo...', 7000, 'success-toast');
         request
             .post('/api/photos/')
             .send(formData)
@@ -127,7 +127,7 @@ class OriginalPhotoList extends React.Component {
                 <form enctype="multipart/form-data" onSubmit={this._handleSubmit.bind(this)}>
                     <div className="row">
                         <input style={{marginRight: 15, fontSize:'90%'}} className="col s5" value={this.state.newPhoto} id="uploadFile" placeholder="No file selected" disabled />
-                        <div className="file-upload btn btn-primary tooltipped col s6">
+                        <div className="file-upload btn btn-primary col s6">
                             <span>Upload</span>
                             <input type="file" className="upload" name="image" id="files" onChange={this._handleChange.bind(this)}/>
                         </div>

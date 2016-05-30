@@ -121,10 +121,9 @@ h3 {
 }
 
 .effect_name {
-    background-color: #0097A7;
     font-family: 'Raleway';
     font-weight: bold;
-    color: #ffffff;
+    color: #0097A7;
     border-radius: 5px;
     margin: 0em 3em 0em 3em;
     position: relative;
