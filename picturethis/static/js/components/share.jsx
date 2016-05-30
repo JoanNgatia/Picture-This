@@ -28,13 +28,13 @@ const FaceBookApi = {
   */
   share: (source) => {
     FB.ui({
-      method: 'feed',
+      method: 'share',
       name: 'Picture-This',
       display: 'popup',
       link: window.location.origin,
       caption: 'Picture-This, work those filters!!!',
       picture: source,
-      description: 'I just edited my image.'
+      description: 'Work those Filters.'
     }, res => {
       console.log(res);
     });
