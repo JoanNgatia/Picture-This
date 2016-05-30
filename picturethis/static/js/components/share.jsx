@@ -31,7 +31,7 @@ const FaceBookApi = {
       method: 'share',
       name: 'Picture-This',
       display: 'popup',
-      link: window.location.origin,
+      href: window.location.origin,
       caption: 'Picture-This, work those filters!!!',
       picture: source,
       description: 'Work those Filters.'
