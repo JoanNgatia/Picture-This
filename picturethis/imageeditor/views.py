@@ -43,5 +43,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
 
 def logout(request):
+    """Log user out of the system."""
     auth_logout(request)
     return redirect('/')
