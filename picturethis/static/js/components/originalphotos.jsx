@@ -147,7 +147,7 @@ const OriginalPhoto  = (props) => {
             <div className="original-photos">
                 <div className="card small">
                     <div className="card-image waves-effect waves-block waves-light">
-                      <img src={props.body} onClick={() => props.update(props.photo)} />
+                      <img src={props.body} style={{objectFit: contain}} onClick={() => props.update(props.photo)} />
                     </div>
                     <div className="card-content">
                       <span className="card-title activator grey-text text-darken-4"><i className="material-icons right">more_vert</i></span>
