@@ -22,6 +22,7 @@ h3 {
 
 .icon {
     padding-top: 15px;
+    max-width: 100px;
 }
 
 #facebook_login_button {
@@ -48,12 +49,10 @@ h3 {
 #social_login_div {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.52);
-    margin-top: 150px;
+    margin-top: 10%;
     margin-bottom: 0px;
-    margin-left: 300px;
-    margin-right: 800px;
-    top: 244px;
-    min-width: 800px;
+    margin-left: 30%;
+    margin-right: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
