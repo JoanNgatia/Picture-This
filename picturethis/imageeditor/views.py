@@ -35,15 +35,9 @@ class HomeView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         """Return dictionary representing passed in context."""
         context = super(HomeView, self).get_context_data(**kwargs)
-        import ipdb; ipdb.set_trace()
         context['user'] = self.request.user
         context['username'] = self.request.user.username
         return context
-
-
-# @login_required(login_url='/')
-# def home(request):
-#     return render_to_response('dashboard.html')
 
 
 def logout(request):
