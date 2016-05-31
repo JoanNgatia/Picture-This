@@ -57,7 +57,7 @@ class ImagePanel extends React.Component {
               key={filteredphoto.id}
               filter={filteredphoto}
               body={window.location.origin + '/' + filteredphoto.image}
-              effect_name={filteredphoto.effect}
+              effect_name={(filteredphoto.effect).toUpperCase()}
               update_canvas={this.updateSelectedFilter}
               save_image={this._onSave}
               />);
