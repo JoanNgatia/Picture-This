@@ -39,7 +39,8 @@ class HomeView(LoginRequiredMixin, TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['user'] = self.request.user
         context['username'] = self.request.user.username
-        context['firstname'] = self.request.user.first_name + ' ' + self.request.user.last_name
+        context['firstname'] = self.request.user.first_name + \
+            ' ' + self.request.user.last_name
         # context['lastname'] = self.request.user.last_name
         return context
 
