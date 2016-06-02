@@ -57,7 +57,7 @@ class ImagePanel extends React.Component {
               key={filteredphoto.id}
               filter={filteredphoto}
               body={window.location.origin + '/' + filteredphoto.image}
-              effect_name={(filteredphoto.effect).toUpperCase()}
+              effect_name={filteredphoto.effect}
               update_canvas={this.updateSelectedFilter}
               save_image={this._onSave}
               />);
@@ -97,10 +97,11 @@ class ImagePanel extends React.Component {
 
 //  render preview thumbnails
 const PreFilteredPhoto  = (props) => {
+    let effect_name = (props.effect_name[0].toUpperCase() + props.effect_name.substr(1))
       return(
         <div className="previews">
           <img src={props.body} id="contain" width="150" height="100" onClick={() => props.update_canvas(props.filter)}/>
-          <p className="effect_name">{props.effect_name}</p>
+          <p className="effect_name">{effect_name}</p>
         </div>
         );
 }
