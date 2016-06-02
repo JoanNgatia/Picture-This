@@ -89,7 +89,6 @@ h3 {
 
 /*dashboard view styling*/
 #logo {
-    /*font-family: 'Raleway';*/
     font-weight: bold;
 }
 
@@ -163,7 +162,7 @@ h3 {
     overflow: hidden;
     margin: 10px;
     background-color: #0097A7 !important;
-    font-family: 'Raleway';
+    font-family: 'Roboto';
 }
 
 .file-upload input.upload {
@@ -180,7 +179,7 @@ h3 {
 
 .canvas .btn {
     background-color: #0097A7 !important;
-    font-family: 'Raleway';
+    font-family: 'Roboto';
     margin-left: 25%;
 }
 
