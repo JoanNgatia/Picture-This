@@ -98,6 +98,13 @@ h3 {
     margin-left: 1em;
 }
 
+.originallist {
+    border-right-style: dotted;
+    border-right-width: 0.1em;
+    padding-right: 0px !important;
+    border-right-color: #F6B2B5;
+}
+
 .add-photo {
     background-color: #0097A7;
 }

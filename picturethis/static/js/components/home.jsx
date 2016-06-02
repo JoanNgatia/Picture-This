@@ -8,7 +8,7 @@ class Home extends React.Component {
       return (
         <div>
           <div className="row">
-            <div className="col s12 m4 l3">
+            <div className="col s12 m4 l3 originallist">
               <ul className="tabs">
                 <li className="tab select col s6 active"><a href="#">Your Photos</a></li>
               </ul>
